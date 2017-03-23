@@ -1,0 +1,14 @@
+dependencies:
+ - name: d3js
+   version: 3.5.3
+   src: htmlwidgets/lib/d3
+   script: d3.min.js
+ - name: topojson
+   version: 1.6.9
+   src: htmlwidgets/lib/topojson
+   script: topojson.min.js
+ - name: datamaps
+   version: 0.5.0
+   src: htmlwidgets/lib/datamaps
+   script:
+     - datamaps.all.hires.min.js

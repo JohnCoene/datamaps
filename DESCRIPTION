@@ -1,0 +1,13 @@
+Package: datamaps
+Title: DataMaps htmlwidget
+Version: 0.0.0.9000
+Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
+Description: DataMaps htmlwidget for R.
+Depends:
+    R (>= 3.3.3)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    htmlwidgets
+RoxygenNote: 5.0.1
