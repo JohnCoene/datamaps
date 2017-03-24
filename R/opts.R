@@ -16,3 +16,22 @@ add_legend <- function(p){
   p$x$legend <- TRUE
   p
 }
+
+#' Add labels
+#'
+#' @param p a datamaps object
+#'
+#' @examples
+#' states <- data.frame(st = c("AR", "NY", "CA", "IL"),
+#'     val = c(10, 5, 3, 8))
+#'
+#' states %>%
+#'     datamaps("usa") %>%
+#'     add_choropleth(st, val) %>%
+#'     add_labels()
+#'
+#' @export
+add_labels <- function(p){
+  p$x$labels <- TRUE
+  p
+}

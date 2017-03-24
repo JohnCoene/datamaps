@@ -29,5 +29,12 @@ data \%>\%
     datamaps() \%>\%
     add_choropleth(name, values, colors = c("skyblue", "yellow", "orangered"))
 
+states <- data.frame(st = c("AR", "NY", "CA", "IL"),
+    val = c(10, 5, 3, 8))
+
+states \%>\%
+    datamaps("usa") \%>\%
+    add_choropleth(st, val)
+
 }
 

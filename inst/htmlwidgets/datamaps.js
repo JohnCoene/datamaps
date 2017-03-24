@@ -22,6 +22,9 @@ HTMLWidgets.widget({
         if(x.hasOwnProperty('legend')){
           choro.legend();
         }
+        if(x.hasOwnProperty('labels')){
+          choro.labels();
+        }
 
       },
 
