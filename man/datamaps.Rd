@@ -8,6 +8,8 @@ datamaps(data, scope = "world", width = NULL, height = NULL,
   elementId = NULL)
 }
 \arguments{
+\item{data}{data.frame.}
+
 \item{scope}{map scope.}
 
 \item{width, height}{Must be a valid CSS unit (like \code{'100\%'},

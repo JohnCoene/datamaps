@@ -2,6 +2,20 @@
 #'
 #' Add choropleth data.
 #'
+#' @param p a datamaps object.
+#' @param locations column containing location names as \code{iso3c}.
+#' @param values column containing values of each \code{location}.
+#' @param colors color palette.
+#' @param default default color for missing locations.
+#'
+#' @examples
+#' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+#'     values = round(runif(6, 1, 10)))
+#'
+#' data %>%
+#'     datamaps() %>%
+#'     add_choropleth(name, values, colors = c("skyblue", "yellow", "orangered"))
+#'
 #' @export
 add_choropleth <- function(p, locations, values, colors = c("blue", "white", "red"), default = "gray"){
 
@@ -9,7 +23,7 @@ add_choropleth <- function(p, locations, values, colors = c("blue", "white", "re
   loc <- eval(substitute(locations), data)
   val <- eval(substitute(values), data)
 
-  p$x$fills <- fill_data_(val, colors)
+  p$x$fills <- fill_data_(val, colors, default)
 
   p$x$data <- choro_data_(loc, val)
 

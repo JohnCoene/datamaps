@@ -7,7 +7,27 @@
 add_choropleth(p, locations, values, colors = c("blue", "white", "red"),
   default = "gray")
 }
+\arguments{
+\item{p}{a datamaps object.}
+
+\item{locations}{column containing location names as \code{iso3c}.}
+
+\item{values}{column containing values of each \code{location}.}
+
+\item{colors}{color palette.}
+
+\item{default}{default color for missing locations.}
+}
 \description{
 Add choropleth data.
+}
+\examples{
+data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+    values = round(runif(6, 1, 10)))
+
+data \%>\%
+    datamaps() \%>\%
+    add_choropleth(name, values, colors = c("skyblue", "yellow", "orangered"))
+
 }
 

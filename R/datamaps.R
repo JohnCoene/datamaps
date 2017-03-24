@@ -2,6 +2,7 @@
 #'
 #' Initiate a datamaps chart.
 #'
+#' @param data data.frame.
 #' @param scope map scope.
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
@@ -9,6 +10,7 @@
 #' @param elementId DOM id.
 #'
 #' @import htmlwidgets
+#' @importFrom grDevices colorRampPalette
 #'
 #' @export
 datamaps <- function(data, scope = "world", width = NULL, height = NULL, elementId = NULL) {
