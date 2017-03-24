@@ -2,6 +2,7 @@
 
 export("%>%")
 export(add_choropleth)
+export(add_legend)
 export(datamaps)
 export(datamapsOutput)
 export(renderDatamaps)

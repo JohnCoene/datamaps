@@ -12,12 +12,16 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        var map = new Datamap({
+        var choro = new Datamap({
             element: document.getElementById(el.id),
             scope: x.scope,
             fills: x.fills,
             data: x.data
         });
+
+        if(x.hasOwnProperty('legend')){
+          choro.legend();
+        }
 
       },
 
