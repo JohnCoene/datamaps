@@ -4,37 +4,47 @@
 \alias{add_choropleth}
 \title{Add choropleth}
 \usage{
-add_choropleth(p, locations, values, colors = c("blue", "white", "red"),
-  default = "gray")
+add_choropleth(p, locations, color, ..., colors = c("#FFEDA0", "#FEB24C",
+  "#F03B20"))
 }
 \arguments{
 \item{p}{a datamaps object.}
 
 \item{locations}{column containing location names as \code{iso3c}.}
 
-\item{values}{column containing values of each \code{location}.}
+\item{color}{column containing color of each \code{location}.}
+
+\item{...}{any other variable to use for tooltip.}
 
 \item{colors}{color palette.}
-
-\item{default}{default color for missing locations.}
 }
 \description{
 Add choropleth data.
 }
 \examples{
 data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
-    values = round(runif(6, 1, 10)))
+    color = round(runif(6, 1, 10)))
 
 data \%>\%
     datamaps() \%>\%
-    add_choropleth(name, values, colors = c("skyblue", "yellow", "orangered"))
+    add_choropleth(name, color, colors = c("skyblue", "yellow", "orangered"))
 
-states <- data.frame(st = c("AR", "NY", "CA", "IL"),
-    val = c(10, 5, 3, 8))
+# categorical colors
+cat <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+    col = rep(c("Yes", "No"), 6))
+
+cat \%>\%
+    datamaps() \%>\%
+    add_choropleth(name, col, colors = c("red", "blue"))
+
+# US states
+states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),
+    val = c(10, 5, 3, 8, 6, 7, 2))
 
 states \%>\%
-    datamaps("usa") \%>\%
-    add_choropleth(st, val)
+    datamaps("usa", "lightgray") \%>\%
+    add_choropleth(st, val) \%>\%
+    add_labels()
 
 }
 

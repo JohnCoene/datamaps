@@ -4,13 +4,15 @@
 \alias{datamaps}
 \title{Initiate map}
 \usage{
-datamaps(data, scope = "world", width = NULL, height = NULL,
-  elementId = NULL)
+datamaps(data, scope = "world", default = "gray", width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data.frame.}
 
 \item{scope}{map scope.}
+
+\item{default}{default color for missing values.}
 
 \item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
 \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a

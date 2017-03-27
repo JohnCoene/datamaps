@@ -11,4 +11,5 @@ LazyData: true
 Imports:
     htmlwidgets,
     magrittr
+Suggests: RColorBrewer
 RoxygenNote: 5.0.1

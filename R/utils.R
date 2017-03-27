@@ -1,5 +1,5 @@
 # filler
-fill_data_ <- function(val, col, def){
+fill_data_ <- function(val, col){
 
   un_val <- as.character(unique(val))
   colors <- colorRampPalette(col)(length(un_val))
@@ -7,22 +7,31 @@ fill_data_ <- function(val, col, def){
   assign("colors", table_col, envir = data_env)
 
   # default
-  colors <- c(colors, def)
-  id <- c(un_val, "defaultFill")
-
   data <- sapply(colors, as.list)
-  names(data) <- id
+  names(data) <- un_val
 
   return(data)
 }
 
-choro_data_ <- function(loc, val){
+choro_data_ <- function(loc, val, ...){
 
-  data <- data.frame(fillKey = val, values = val)
-  data <- apply(data, 1, as.list)
-  names(data) <- as.character(loc)
+  # process additional arguments
+  data <- get("data", envir = data_env) # get data for eval
+  dots <- eval(substitute(alist(...))) # capture dots
+  base <- lapply(dots, eval, data) # eval
+  names(base) <- sapply(dots, deparse) # deparse for name
+  base <- as.data.frame(base) # to data.frame
 
-  return(data)
+  # add fillKey
+  if(nrow(base))
+    base$fillKey <- val
+  else
+    base <- data.frame(fillKey = val)
+
+  base <- apply(base, 1, as.list)
+  names(base) <- as.character(loc)
+
+  return(base)
 }
 
 get_id_ <- function(v){

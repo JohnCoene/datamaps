@@ -4,6 +4,7 @@
 #'
 #' @param data data.frame.
 #' @param scope map scope.
+#' @param default default color for missing values.
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
@@ -13,7 +14,7 @@
 #' @importFrom grDevices colorRampPalette
 #'
 #' @export
-datamaps <- function(data, scope = "world", width = NULL, height = NULL, elementId = NULL) {
+datamaps <- function(data, scope = "world", default = "gray", width = NULL, height = NULL, elementId = NULL) {
 
   if(!missing(data))
     assign("data", data, envir = data_env)
@@ -24,7 +25,8 @@ datamaps <- function(data, scope = "world", width = NULL, height = NULL, element
 
   # forward options using x
   x = list(
-    scope = tolower(scope)
+    scope = tolower(scope),
+    fills = list(defaultFill = default)
   )
 
   attr(x, 'TOJSON_ARGS') <- list(keep_vec_names = TRUE)

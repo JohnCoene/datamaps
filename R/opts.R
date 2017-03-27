@@ -22,8 +22,8 @@ add_legend <- function(p){
 #' @param p a datamaps object
 #'
 #' @examples
-#' states <- data.frame(st = c("AR", "NY", "CA", "IL"),
-#'     val = c(10, 5, 3, 8))
+#' states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),
+#'     val = c(10, 5, 3, 8, 6, 7, 2))
 #'
 #' states %>%
 #'     datamaps("usa") %>%

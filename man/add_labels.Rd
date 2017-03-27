@@ -13,12 +13,12 @@ add_labels(p)
 Add labels
 }
 \examples{
-data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
-    values = c("N. America", "EU", "Asia", "EU", "Africa", "Africa"))
+states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),
+    val = c(10, 5, 3, 8, 6, 7, 2))
 
-data \%>\%
-    datamaps() \%>\%
-    add_choropleth(name, values, colors = c("skyblue", "yellow", "orangered")) \%>\%
+states \%>\%
+    datamaps("usa") \%>\%
+    add_choropleth(st, val) \%>\%
     add_labels()
 
 }
