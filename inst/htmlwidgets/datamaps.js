@@ -19,6 +19,7 @@ HTMLWidgets.widget({
             responsive: x.responsive,
             geographyConfig: x.geographyConfig,
             bubblesConfig: x.bubblesConfig,
+            arcConfig: x.arcConfig,
             fills: x.fills,
             data: x.data
         });
@@ -27,9 +28,14 @@ HTMLWidgets.widget({
           map.bubbles(x.bubbles);
         }
 
+        if(x.hasOwnProperty('arcs')){
+          map.arc(x.arcs);
+        }
+
         if(x.hasOwnProperty('legend')){
           map.legend();
         }
+
         if(x.hasOwnProperty('labels')){
           map.labels();
         }

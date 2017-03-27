@@ -29,7 +29,7 @@ Add bubbles
 coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
                      lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
                      lat = c(51.49999, 40.74998, 39.92889, -33.92001),
-                     values = runif(4, 3, 20))
+                     values = runif(4, 5, 17))
 
 coords \%>\%
     datamaps() \%>\%

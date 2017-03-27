@@ -42,7 +42,7 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 
   p$x$fills <- append(p$x$fills, fill_data_(col, colors))
 
-  p$x$data <- choro_data_(loc, col, ...)
+  p$x$data <- append(p$x$data, choro_data_(loc, col, ...))
 
   p
 
@@ -62,7 +62,7 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 #' coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
 #'                      lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
 #'                      lat = c(51.49999, 40.74998, 39.92889, -33.92001),
-#'                      values = runif(4, 3, 20))
+#'                      values = runif(4, 5, 17))
 #'
 #' coords %>%
 #'     datamaps() %>%
@@ -89,7 +89,7 @@ add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors
 
   p$x$fills <- append(p$x$fills, fill_data_(col, colors))
 
-  p$x$bubbles <- bubbles_data_(lon, lat, rad, col, nam, ...)
+  p$x$bubbles <- append(p$x$bubbles, bubbles_data_(lon, lat, rad, col, nam, ...))
 
   p
 
@@ -104,16 +104,25 @@ add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors
 #' coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
 #'                      lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
 #'                      lat = c(51.49999, 40.74998, 39.92889, -33.92001),
-#'                      values = runif(4, 3, 20))
+#'                      values = c(11, 23, 29 , 42))
 #'
-#' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA", "BRA", "AFG"),
+#' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA",
+#'                             "BRA", "AFG"),
 #'     color = round(runif(8, 1, 10)))
+#'
+#' edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM", "GRD",
+#'                                "FJI", "GNB", "AUT", "YEM"),
+#'     target = c("BRA", "USA", "URY", "ZAF", "SAU", "SVK", "RWA", "SWE",
+#'                "TUV", "ZWE"),
+#'     strokeColor = "gray")
 #'
 #' data %>%
 #'     datamaps(default = "lightgray") %>%
 #'     add_choropleth(name, color) %>%
 #'     add_data(coords) %>%
-#'     add_bubbles(lon, lat, values, values, city, colors = c("gray", "blue"))
+#'     add_bubbles(lon, lat, values, values, city, colors = c("skyblue", "darkblue")) %>%
+#'     add_data(edges) %>%
+#'     add_arcs(origin, target, strokeColor)
 #'
 #' @export
 add_data <- function(p, data) {
@@ -122,6 +131,47 @@ add_data <- function(p, data) {
     assign("data", data, envir = data_env)
   else
     stop("missing data", call. = FALSE)
+
+  p
+}
+
+
+#' Add arc
+#'
+#' @param p a datamaps object.
+#' @param origin,destination edges.
+#' @param ... any other arguments to use as options.
+#'
+#' @examples
+#' data <- data.frame(origin = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+#'     target = c("FRA", "RUS", "BEL", "CAF", "VEN", "SWZ"),
+#'     greatArc = rep(c(TRUE, FALSE), 3),
+#'     arcSharpness = 2)
+#'
+#' data %>%
+#'     datamaps() %>%
+#'     add_arcs(origin, target, greatArc, arcSharpness)
+#'
+#' # US states
+#' states <- data.frame(origin = c("AR", "NY", "CA", "IL", "CO", "MT",
+#'                                 "TX", "WA", "TN", "MT"),
+#'     target = c("OR", "SD", "WI", "TX", "LA", "AZ", "FL", "MI", "HI",
+#'                "OK"),
+#'     strokeWidth = runif(10, 1, 9),
+#'     strokeColor = colorRampPalette(c("red", "blue"))(10))
+#'
+#' states %>%
+#'     datamaps(scope = "USA", default = "lightgray") %>%
+#'     add_arcs(origin, target, strokeWidth, strokeColor)
+#'
+#' @export
+add_arcs <- function(p, origin, destination, ...){
+
+  data <- get("data", envir = data_env)
+  ori <- eval(substitute(origin), data)
+  des <- eval(substitute(destination), data)
+
+  p$x$arcs <- arc_data_(ori, des, ...)
 
   p
 }

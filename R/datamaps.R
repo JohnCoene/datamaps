@@ -24,7 +24,7 @@ datamaps <- function(data, scope = "world", default = "gray", projection = "equi
   else
     stop("missing data", call. = FALSE)
 
-  if(!scope %in% c("usa", "world")) stop("incorrect scope, see details", call. = FALSE)
+  if(!tolower(scope) %in% c("usa", "world")) stop("incorrect scope, see details", call. = FALSE)
 
   # forward options using x
   x = list(

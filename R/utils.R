@@ -60,3 +60,23 @@ bubbles_data_ <- function(lon, lat, rad, col, nam, ...){
 
   return(base)
 }
+
+arc_data_ <- function(ori, des, ...){
+
+  # process additional arguments
+  data <- get("data", envir = data_env) # get data for eval
+  dots <- eval(substitute(alist(...))) # capture dots
+  base <- lapply(dots, eval, data) # eval
+  names(base) <- sapply(dots, deparse) # deparse for name
+  base <- as.data.frame(base) # to data.frame
+
+  if(nrow(base) > 1){
+    base$origin <- ori
+    base$destination <- des
+  } else {
+    base <- data.frame(origin = ori, destination = des)
+  }
+
+  apply(base, 1, as.list)
+
+}

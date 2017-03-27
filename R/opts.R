@@ -141,3 +141,41 @@ config_bubbles <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, 
 
   p
 }
+
+#' Configure arcs
+#'
+#' @param p a datamaps object.
+#' @param stroke.color arc colors.
+#' @param stroke.width arc width.
+#' @param arc.sharpness arc sharpness.
+#' @param animation.speed arc draw speed in milliseconds.
+#' @param popup.on.hover whether to show tooltip.
+#' @param ... any additional options.
+#'
+#' @examples
+#' edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM",
+#'                                "GRD", "FJI", "GNB", "AUT", "YEM"),
+#'     target = c("BRA", "USA", "URY", "ZAF", "SAU", "SVK", "RWA", "SWE",
+#'                "TUV", "ZWE"))
+#'
+#' edges %>%
+#'     datamaps() %>%
+#'     add_arcs(origin, target) %>%
+#'     config_arcs(stroke.color = "blue", stroke.width = 2, arc.sharpness = 1.5,
+#'                 animation.speed = 1000)
+#'
+#' @export
+config_arcs <- function(p, stroke.color = '#DD1C77', stroke.width = 1, arc.sharpness = 1, animation.speed = 600, popup.on.hover = FALSE,
+                        ...){
+
+  opts <- list(...)
+  opts$strokeColor <- stroke.color
+  opts$strokeWidth <- stroke.width
+  opts$arcSharpness <- arc.sharpness
+  opts$animationSpeed <- animation.speed
+  opts$popupOnHover <- popup.on.hover
+
+  p$x$arcConfig <- append(p$x$arcConfig, opts)
+
+  p
+}
