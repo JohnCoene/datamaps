@@ -12,18 +12,26 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        var choro = new Datamap({
+        var map = new Datamap({
             element: document.getElementById(el.id),
             scope: x.scope,
+            projection: x.projection,
+            responsive: x.responsive,
+            geographyConfig: x.geographyConfig,
+            bubblesConfig: x.bubblesConfig,
             fills: x.fills,
             data: x.data
         });
 
+        if(x.hasOwnProperty('bubbles')){
+          map.bubbles(x.bubbles);
+        }
+
         if(x.hasOwnProperty('legend')){
-          choro.legend();
+          map.legend();
         }
         if(x.hasOwnProperty('labels')){
-          choro.labels();
+          map.labels();
         }
 
       },

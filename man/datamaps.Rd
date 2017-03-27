@@ -4,7 +4,8 @@
 \alias{datamaps}
 \title{Initiate map}
 \usage{
-datamaps(data, scope = "world", default = "gray", width = NULL,
+datamaps(data, scope = "world", default = "gray",
+  projection = "equirectangular", responsive = TRUE, width = NULL,
   height = NULL, elementId = NULL)
 }
 \arguments{
@@ -13,6 +14,10 @@ datamaps(data, scope = "world", default = "gray", width = NULL,
 \item{scope}{map scope.}
 
 \item{default}{default color for missing values.}
+
+\item{projection}{map projection.}
+
+\item{responsive}{whether for map to be responsive.}
 
 \item{width, height}{Must be a valid CSS unit (like \code{'100\%'},
 \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a

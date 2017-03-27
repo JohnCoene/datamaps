@@ -5,6 +5,8 @@
 #' @param data data.frame.
 #' @param scope map scope.
 #' @param default default color for missing values.
+#' @param projection map projection.
+#' @param responsive whether for map to be responsive.
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
@@ -14,19 +16,23 @@
 #' @importFrom grDevices colorRampPalette
 #'
 #' @export
-datamaps <- function(data, scope = "world", default = "gray", width = NULL, height = NULL, elementId = NULL) {
+datamaps <- function(data, scope = "world", default = "gray", projection = "equirectangular", responsive = TRUE, width = NULL,
+                     height = NULL, elementId = NULL) {
 
   if(!missing(data))
     assign("data", data, envir = data_env)
   else
-    stop(missing(data))
+    stop("missing data", call. = FALSE)
 
   if(!scope %in% c("usa", "world")) stop("incorrect scope, see details", call. = FALSE)
 
   # forward options using x
   x = list(
     scope = tolower(scope),
-    fills = list(defaultFill = default)
+    projection = projection,
+    fills = list(defaultFill = default),
+    geographyConfig = list(dataUrl = NULL)
+    #,bubblesConfig = list(key = "JSON.stringify")
   )
 
   attr(x, 'TOJSON_ARGS') <- list(keep_vec_names = TRUE)

@@ -17,11 +17,11 @@
 #'     add_choropleth(name, color, colors = c("skyblue", "yellow", "orangered"))
 #'
 #' # categorical colors
-#' cat <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+#' cat <- data.frame(name = c("USA", "BRA", "COL", "CAN", "ARG", "CHL"),
 #'     col = rep(c("Yes", "No"), 6))
 #'
 #' cat %>%
-#'     datamaps() %>%
+#'     datamaps(projection = "orthographic") %>%
 #'     add_choropleth(name, col, colors = c("red", "blue"))
 #'
 #' # US states
@@ -29,7 +29,7 @@
 #'     val = c(10, 5, 3, 8, 6, 7, 2))
 #'
 #' states %>%
-#'     datamaps("usa", "lightgray") %>%
+#'     datamaps(scope = "usa", default = "lightgray",) %>%
 #'     add_choropleth(st, val) %>%
 #'     add_labels()
 #'
@@ -51,8 +51,77 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 #' Add bubbles
 #'
 #' @param p a datamaps object.
+#' @param longitude,latitude coordinates of bubbles.
+#' @param radius radius of bubbles.
+#' @param color color of bubbles.
+#' @param colors color palette.
+#' @param name name of bubbles.
+#' @param ... any other variable to use in tooltip.
+#'
+#' @examples
+#' coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
+#'                      lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
+#'                      lat = c(51.49999, 40.74998, 39.92889, -33.92001),
+#'                      values = runif(4, 3, 20))
+#'
+#' coords %>%
+#'     datamaps() %>%
+#'     add_bubbles(lon, lat, values * 2, values, city)
+#'
+#' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+#'     color = round(runif(6, 1, 10)))
+#'
+#' data %>%
+#'     datamaps(default = "lightgray") %>%
+#'     add_choropleth(name, color) %>%
+#'     add_data(coords) %>%
+#'     add_bubbles(lon, lat, values * 2, values, city, colors = c("red", "blue"))
 #'
 #' @export
-add_bubbles <- function(p){
+add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors = c("#FFEDA0", "#FEB24C", "#F03B20")){
 
+  data <- get("data", envir = data_env)
+  col <- eval(substitute(color), data)
+  lon <- eval(substitute(longitude), data)
+  lat <- eval(substitute(latitude), data)
+  rad <- eval(substitute(radius), data)
+  nam <- eval(substitute(name), data)
+
+  p$x$fills <- append(p$x$fills, fill_data_(col, colors))
+
+  p$x$bubbles <- bubbles_data_(lon, lat, rad, col, nam, ...)
+
+  p
+
+}
+
+#' Add data
+#'
+#' @param p a datamaps object.
+#' @param data data.frame.
+#'
+#' @examples
+#' coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
+#'                      lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
+#'                      lat = c(51.49999, 40.74998, 39.92889, -33.92001),
+#'                      values = runif(4, 3, 20))
+#'
+#' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA", "BRA", "AFG"),
+#'     color = round(runif(8, 1, 10)))
+#'
+#' data %>%
+#'     datamaps(default = "lightgray") %>%
+#'     add_choropleth(name, color) %>%
+#'     add_data(coords) %>%
+#'     add_bubbles(lon, lat, values, values, city, colors = c("gray", "blue"))
+#'
+#' @export
+add_data <- function(p, data) {
+
+  if(!missing(data))
+    assign("data", data, envir = data_env)
+  else
+    stop("missing data", call. = FALSE)
+
+  p
 }

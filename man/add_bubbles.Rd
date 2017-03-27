@@ -4,12 +4,45 @@
 \alias{add_bubbles}
 \title{Add bubbles}
 \usage{
-add_bubbles(p)
+add_bubbles(p, longitude, latitude, radius, color, name, ...,
+  colors = c("#FFEDA0", "#FEB24C", "#F03B20"))
 }
 \arguments{
 \item{p}{a datamaps object.}
+
+\item{longitude, latitude}{coordinates of bubbles.}
+
+\item{radius}{radius of bubbles.}
+
+\item{color}{color of bubbles.}
+
+\item{name}{name of bubbles.}
+
+\item{...}{any other variable to use in tooltip.}
+
+\item{colors}{color palette.}
 }
 \description{
 Add bubbles
+}
+\examples{
+coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),
+                     lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
+                     lat = c(51.49999, 40.74998, 39.92889, -33.92001),
+                     values = runif(4, 3, 20))
+
+coords \%>\%
+    datamaps() \%>\%
+    add_bubbles(lon, lat, values * 2, values, city)
+
+data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
+    color = round(runif(6, 1, 10)))
+
+data \%>\%
+    datamaps(default = "lightgray") \%>\%
+    add_choropleth(name, color) \%>\%
+    add_data(coords) \%>\%
+    add_bubbles(lon, lat, values * 2, values, city, colors = c("red", "blue"))
+
 }
 
