@@ -55,21 +55,24 @@ add_labels <- function(p){
 #'
 #' @examples
 #' data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
-#'     values = c("N. America", "EU", "Asia", "EU", "Africa", "Africa"))
+#'     values = c("N. America", "EU", "Asia", "EU", "Africa", "Africa"),
+#'     letters = LETTERS[1:6])
 #'
 #' data %>%
-#'     datamaps() %>%
+#'     datamaps(default = "lightgray") %>%
 #'     add_choropleth(name, values) %>%
 #'     config_geo(hide.antarctica = FALSE,
-#'                border.width = 3,
+#'                border.width = 2,
 #'                border.opacity = 0.6,
-#'                border.color = "red")
+#'                border.color = "gray",
+#'                highlight.border.color = "green",
+#'                highlight.fill.color = "lightgreen")
 #'
 #' @export
 config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide.antarctica = TRUE, hide.hawaii.and.alaska = FALSE,
                        border.width = 1, border.opacity = 1, border.color = "#FDFDFD", highlight.fill.color = "#FC8D59",
                        highlight.border.opacity = 1, highlight.border.color = "rgba(250, 15, 160, 0.2)",
-                       highlight.fill.opacity = 0.85, highlight.border.width = 2, ...){
+                       highlight.fill.opacity = 0.85, highlight.border.width = 2, popup = NULL, ...){
 
   opts <- list(...)
   opts$hideAntarctica <- hide.antarctica
@@ -77,6 +80,12 @@ config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide
   opts$borderWidth <- border.width
   opts$borderOpacity <- border.opacity
   opts$borderColor <- border.color
+  opts$popupTemplate <- if(!is.null(popup)) popup
+  opts$highlightFillColor <- highlight.fill.color
+  opts$highlightBorderOpacity <- highlight.border.opacity
+  opts$highlightBorderColor <- highlight.border.color
+  opts$highlightFillOpacity <- highlight.fill.opacity
+  opts$highlightBorderWidth <- highlight.border.width
 
   p$x$geographyConfig <- append(p$x$geographyConfig, opts)
 

@@ -9,7 +9,8 @@ config_geo(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
   border.width = 1, border.opacity = 1, border.color = "#FDFDFD",
   highlight.fill.color = "#FC8D59", highlight.border.opacity = 1,
   highlight.border.color = "rgba(250, 15, 160, 0.2)",
-  highlight.fill.opacity = 0.85, highlight.border.width = 2, ...)
+  highlight.fill.opacity = 0.85, highlight.border.width = 2, popup = NULL,
+  ...)
 }
 \arguments{
 \item{p}{a datamaps object.}
@@ -45,15 +46,17 @@ Configure map
 }
 \examples{
 data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
-    values = c("N. America", "EU", "Asia", "EU", "Africa", "Africa"))
+    values = c("N. America", "EU", "Asia", "EU", "Africa", "Africa"),
+    letters = LETTERS[1:6])
 
 data \%>\%
-    datamaps() \%>\%
+    datamaps(default = "lightgray") \%>\%
     add_choropleth(name, values) \%>\%
     config_geo(hide.antarctica = FALSE,
-               border.width = 3,
+               border.width = 2,
                border.opacity = 0.6,
-               border.color = "red")
+               border.color = "gray",
+               highlight.border.color = "green")
 
 }
 
