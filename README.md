@@ -11,3 +11,19 @@ R htmlwidget for [datamaps](http://datamaps.github.io/)
 # install.packages("devtools")
 devtools::install_github("JohnCoene/datamaps")
 ```
+
+## Examples
+
+```R
+# fake data
+data <- data.frame(countries = c("GBR", "RUS", "CHN", "USA", "ITA", "AUT", "IRQ", "DEU", "SAU", 
+                                 "IND", "JPN", "FRA", "BRA", "ESP", "MEX", "KEN", "SRB", "OMN", 
+                                 "POL", "SVN", "VNM", "BEL", "CAN", "CHE", "COL", "HKG", "HUN", 
+                                 "IRL", "KOR", "LKA", "LTU", "NOR", "PAK", "QAT", "SGP", "TUR", 
+                                 "TWN", "UKR", "ZWE"),
+                   values = runif(39, 5, 100))
+
+data %>% 
+    datamaps(default = "lightgray") %>% 
+    add_choropleth(countries, values)
+```

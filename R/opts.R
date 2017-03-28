@@ -72,7 +72,7 @@ add_labels <- function(p){
 config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide.antarctica = TRUE, hide.hawaii.and.alaska = FALSE,
                        border.width = 1, border.opacity = 1, border.color = "#FDFDFD", highlight.fill.color = "#FC8D59",
                        highlight.border.opacity = 1, highlight.border.color = "rgba(250, 15, 160, 0.2)",
-                       highlight.fill.opacity = 0.85, highlight.border.width = 2, popup = NULL, ...){
+                       highlight.fill.opacity = 0.85, highlight.border.width = 2, ...){
 
   opts <- list(...)
   opts$hideAntarctica <- hide.antarctica
@@ -80,7 +80,6 @@ config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide
   opts$borderWidth <- border.width
   opts$borderOpacity <- border.opacity
   opts$borderColor <- border.color
-  opts$popupTemplate <- if(!is.null(popup)) popup
   opts$highlightFillColor <- highlight.fill.color
   opts$highlightBorderOpacity <- highlight.border.opacity
   opts$highlightBorderColor <- highlight.border.color

@@ -9,8 +9,7 @@ config_geo(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
   border.width = 1, border.opacity = 1, border.color = "#FDFDFD",
   highlight.fill.color = "#FC8D59", highlight.border.opacity = 1,
   highlight.border.color = "rgba(250, 15, 160, 0.2)",
-  highlight.fill.opacity = 0.85, highlight.border.width = 2, popup = NULL,
-  ...)
+  highlight.fill.opacity = 0.85, highlight.border.width = 2, ...)
 }
 \arguments{
 \item{p}{a datamaps object.}
@@ -56,7 +55,8 @@ data \%>\%
                border.width = 2,
                border.opacity = 0.6,
                border.color = "gray",
-               highlight.border.color = "green")
+               highlight.border.color = "green",
+               highlight.fill.color = "lightgreen")
 
 }
 

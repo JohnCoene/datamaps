@@ -16,7 +16,7 @@
 #' @importFrom grDevices colorRampPalette
 #'
 #' @export
-datamaps <- function(data, scope = "world", default = "gray", projection = "equirectangular", responsive = TRUE, width = NULL,
+datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = TRUE, width = NULL,
                      height = NULL, elementId = NULL) {
 
   if(!missing(data))

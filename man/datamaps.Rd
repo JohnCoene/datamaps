@@ -4,7 +4,7 @@
 \alias{datamaps}
 \title{Initiate map}
 \usage{
-datamaps(data, scope = "world", default = "gray",
+datamaps(data, scope = "world", default = "#ABDDA4",
   projection = "equirectangular", responsive = TRUE, width = NULL,
   height = NULL, elementId = NULL)
 }
