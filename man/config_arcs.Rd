@@ -33,7 +33,7 @@ edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM",
 
 edges \%>\%
     datamaps() \%>\%
-    add_arcs(origin, target) \%>\%
+    add_arcs_name(origin, target) \%>\%
     config_arcs(stroke.color = "blue", stroke.width = 2, arc.sharpness = 1.5,
                 animation.speed = 1000)
 

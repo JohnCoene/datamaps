@@ -80,3 +80,35 @@ arc_data_ <- function(ori, des, ...){
   apply(base, 1, as.list)
 
 }
+
+arc_data__ <- function(ori.lon, ori.lat, des.lon, des.lat, ...){
+
+  # process additional arguments
+  data <- get("data", envir = data_env) # get data for eval
+  dots <- eval(substitute(alist(...))) # capture dots
+  base <- lapply(dots, eval, data) # eval
+  names(base) <- sapply(dots, deparse) # deparse for name
+  base <- as.data.frame(base) # to data.frame
+
+  # edges
+  edges <- list()
+  for(i in 1:length(ori.lon)){
+    edges[[i]] <- list(origin = list(latitude = ori.lat[i], longitude = ori.lon[i]),
+                      destination = list(latitude = des.lat[i], longitude = des.lon[i]))
+  }
+
+  if(nrow(base) == length(edges)){
+
+    # catch 1 col
+    if(ncol(base) == 1) base$singleCol <- TRUE
+
+    for(i in 1:length(edges)){
+      bs <- apply(base[i,], 1, as.list)
+      names(bs) <- "options"
+      edges[[i]] <- append(edges[[i]], bs)
+    }
+  }
+
+  return(edges)
+
+}

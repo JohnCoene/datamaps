@@ -4,12 +4,14 @@
 \alias{add_arcs}
 \title{Add arc}
 \usage{
-add_arcs(p, origin, destination, ...)
+add_arcs(p, origin.lon, origin.lat, destination.lon, destination.lat, ...)
 }
 \arguments{
 \item{p}{a datamaps object.}
 
-\item{origin, destination}{edges.}
+\item{origin.lon, origin.lat}{origin coordinates.}
+
+\item{destination.lon, destination.lat}{destination coordinates.}
 
 \item{...}{any other arguments to use as options.}
 }
@@ -17,26 +19,16 @@ add_arcs(p, origin, destination, ...)
 Add arc
 }
 \examples{
-data <- data.frame(origin = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),
-    target = c("FRA", "RUS", "BEL", "CAF", "VEN", "SWZ"),
-    greatArc = rep(c(TRUE, FALSE), 3),
-    arcSharpness = 2)
-
-data \%>\%
-    datamaps() \%>\%
-    add_arcs(origin, target, greatArc, arcSharpness)
-
-# US states
-states <- data.frame(origin = c("AR", "NY", "CA", "IL", "CO", "MT",
-                                "TX", "WA", "TN", "MT"),
-    target = c("OR", "SD", "WI", "TX", "LA", "AZ", "FL", "MI", "HI",
-               "OK"),
-    strokeWidth = runif(10, 1, 9),
-    strokeColor = colorRampPalette(c("red", "blue"))(10))
+states <- data.frame(ori.lon = c(-97.03720, -87.90446),
+    ori.lat = c(32.89595, 41.97960),
+    des.lon = c(-106.60919, -97.66987),
+    des.lat = c(35.04022, 30.19453),
+    strokeColor = c("blue", "red"),
+    arcSharpness = c(2, 1))
 
 states \%>\%
     datamaps(scope = "USA", default = "lightgray") \%>\%
-    add_arcs(origin, target, strokeWidth, strokeColor)
+    add_arcs(ori.lon, ori.lat, des.lon, des.lat, strokeColor)
 
 }
 

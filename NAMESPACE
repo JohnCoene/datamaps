@@ -2,6 +2,7 @@
 
 export("%>%")
 export(add_arcs)
+export(add_arcs_name)
 export(add_bubbles)
 export(add_choropleth)
 export(add_data)

@@ -168,7 +168,7 @@ config_bubbles <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, 
 #'
 #' edges %>%
 #'     datamaps() %>%
-#'     add_arcs(origin, target) %>%
+#'     add_arcs_name(origin, target) %>%
 #'     config_arcs(stroke.color = "blue", stroke.width = 2, arc.sharpness = 1.5,
 #'                 animation.speed = 1000)
 #'

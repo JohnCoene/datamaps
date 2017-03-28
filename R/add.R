@@ -114,7 +114,7 @@ add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors
 #'                                "FJI", "GNB", "AUT", "YEM"),
 #'     target = c("BRA", "USA", "URY", "ZAF", "SAU", "SVK", "RWA", "SWE",
 #'                "TUV", "ZWE"),
-#'     strokeColor = "gray")
+#'     strokeColor = rep(c("gray", "black"), 5))
 #'
 #' data %>%
 #'     datamaps(default = "lightgray") %>%
@@ -122,7 +122,7 @@ add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors
 #'     add_data(coords) %>%
 #'     add_bubbles(lon, lat, values, values, city, colors = c("skyblue", "darkblue")) %>%
 #'     add_data(edges) %>%
-#'     add_arcs(origin, target, strokeColor)
+#'     add_arcs_name(origin, target, strokeColor)
 #'
 #' @export
 add_data <- function(p, data) {
@@ -150,7 +150,7 @@ add_data <- function(p, data) {
 #'
 #' data %>%
 #'     datamaps() %>%
-#'     add_arcs(origin, target, greatArc, arcSharpness)
+#'     add_arcs_name(origin, target, greatArc, arcSharpness)
 #'
 #' # US states
 #' states <- data.frame(origin = c("AR", "NY", "CA", "IL", "CO", "MT",
@@ -162,16 +162,49 @@ add_data <- function(p, data) {
 #'
 #' states %>%
 #'     datamaps(scope = "USA", default = "lightgray") %>%
-#'     add_arcs(origin, target, strokeWidth, strokeColor)
+#'     add_arcs_name(origin, target, strokeWidth, strokeColor)
 #'
 #' @export
-add_arcs <- function(p, origin, destination, ...){
+add_arcs_name <- function(p, origin, destination, ...){
 
   data <- get("data", envir = data_env)
   ori <- eval(substitute(origin), data)
   des <- eval(substitute(destination), data)
 
-  p$x$arcs <- arc_data_(ori, des, ...)
+  p$x$arcs <- append(p$x$arcs, arc_data_(ori, des, ...))
+
+  p
+}
+
+#' Add arc
+#'
+#' @param p a datamaps object.
+#' @param origin.lon,origin.lat origin coordinates.
+#' @param destination.lon,destination.lat destination coordinates.
+#' @param ... any other arguments to use as options.
+#'
+#' @examples
+#' states <- data.frame(ori.lon = c(-97.03720, -87.90446),
+#'     ori.lat = c(32.89595, 41.97960),
+#'     des.lon = c(-106.60919, -97.66987),
+#'     des.lat = c(35.04022, 30.19453),
+#'     strokeColor = c("blue", "red"),
+#'     arcSharpness = c(2, 1))
+#'
+#' states %>%
+#'     datamaps(scope = "USA", default = "lightgray") %>%
+#'     add_arcs(ori.lon, ori.lat, des.lon, des.lat, strokeColor)
+#'
+#' @export
+add_arcs <- function(p, origin.lon, origin.lat, destination.lon, destination.lat, ...){
+
+  data <- get("data", envir = data_env)
+  ori.lon <- eval(substitute(origin.lon), data)
+  ori.lat <- eval(substitute(origin.lat), data)
+  des.lon <- eval(substitute(destination.lon), data)
+  des.lat <- eval(substitute(destination.lat), data)
+
+  p$x$arcs <- append(p$x$arcs, arc_data__(ori.lon, ori.lat, des.lon, des.lat, ...))
 
   p
 }

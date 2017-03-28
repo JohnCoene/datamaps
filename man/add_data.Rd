@@ -28,7 +28,7 @@ edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM", "GRD",
                                "FJI", "GNB", "AUT", "YEM"),
     target = c("BRA", "USA", "URY", "ZAF", "SAU", "SVK", "RWA", "SWE",
                "TUV", "ZWE"),
-    strokeColor = "gray")
+    strokeColor = rep(c("gray", "black"), 5))
 
 data \%>\%
     datamaps(default = "lightgray") \%>\%
@@ -36,7 +36,7 @@ data \%>\%
     add_data(coords) \%>\%
     add_bubbles(lon, lat, values, values, city, colors = c("skyblue", "darkblue")) \%>\%
     add_data(edges) \%>\%
-    add_arcs(origin, target, strokeColor)
+    add_arcs_name(origin, target, strokeColor)
 
 }
 
