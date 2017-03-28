@@ -29,7 +29,7 @@
 #'     val = c(10, 5, 3, 8, 6, 7, 2))
 #'
 #' states %>%
-#'     datamaps(scope = "usa", default = "lightgray",) %>%
+#'     datamaps(scope = "usa", default = "lightgray") %>%
 #'     add_choropleth(st, val) %>%
 #'     add_labels()
 #'
