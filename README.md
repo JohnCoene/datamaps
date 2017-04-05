@@ -1,6 +1,8 @@
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/datamaps.svg?branch=master)](https://travis-ci.org/JohnCoene/datamaps)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/datamaps?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/datamaps)
 
+![datamaps](http://john-coene.com/img/thumbnails/datamaps.png)
+
 # datamaps
 
 R htmlwidget for [datamaps](http://datamaps.github.io/)
