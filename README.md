@@ -1,11 +1,11 @@
+# datamaps
+
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/datamaps.svg?branch=master)](https://travis-ci.org/JohnCoene/datamaps)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/datamaps?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/datamaps)
 
 ![datamaps](http://john-coene.com/img/thumbnails/datamaps.png)
 
-# datamaps
-
-R htmlwidget for [datamaps](http://datamaps.github.io/)
+R htmlwidget for [datamaps](http://datamaps.github.io/).
 
 ## Installation
 
@@ -14,18 +14,55 @@ R htmlwidget for [datamaps](http://datamaps.github.io/)
 devtools::install_github("JohnCoene/datamaps")
 ```
 
+## Info
+
+* See [website](http://john-coene.com/datamaps) for demos. 
+* Includes proxies to update the visualisation without re-drawing entire map.
+
 ## Examples
 
-```R
-# fake data
-data <- data.frame(countries = c("GBR", "RUS", "CHN", "USA", "ITA", "AUT", "IRQ", "DEU", "SAU", 
-                                 "IND", "JPN", "FRA", "BRA", "ESP", "MEX", "KEN", "SRB", "OMN", 
-                                 "POL", "SVN", "VNM", "BEL", "CAN", "CHE", "COL", "HKG", "HUN", 
-                                 "IRL", "KOR", "LKA", "LTU", "NOR", "PAK", "QAT", "SGP", "TUR", 
-                                 "TWN", "UKR", "ZWE"),
-                   values = runif(39, 5, 100))
+Example proxy.
 
-data %>% 
-    datamaps(default = "lightgray") %>% 
-    add_choropleth(countries, values)
+```R
+library(shiny)
+
+ui <- fluidPage(
+
+  textInput(
+    "from",
+    "Origin",
+    value = "USA"
+  ),
+  textInput(
+    "to",
+    "Destination",
+    value = "RUS"
+  ),
+  actionButton(
+    "submit",
+    "Draw arc"
+  ),
+  datamapsOutput("map")
+)
+
+server <- function(input, output){
+
+  arc <- reactive({
+    data.frame(from = input$from, to = input$to)
+  })
+
+ output$map <- renderDatamaps({
+   datamaps()
+ })
+
+ observeEvent(input$submit, {
+   datamapsProxy("map") %>%
+     add_data(arc()) %>%
+     update_arcs_name(from, to)
+ })
+
+}
+
+shinyApp(ui, server)
+}
 ```

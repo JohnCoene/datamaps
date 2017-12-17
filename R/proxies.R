@@ -33,7 +33,7 @@
 #'    "value",
 #'    "Value",
 #'    min = 1,
-#'    max = 10,
+#'    max = 4,
 #'    step = 1,
 #'    value = 3
 #'  ),
@@ -305,7 +305,7 @@ update_legend <- function(proxy){
 #'   ),
 #'   actionButton(
 #'     "submit",
-#'     "Add arc"
+#'     "Draw arc"
 #'   ),
 #'   datamapsOutput("map")
 #' )
