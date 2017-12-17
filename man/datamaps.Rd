@@ -5,7 +5,7 @@
 \title{Initiate map}
 \usage{
 datamaps(data, scope = "world", default = "#ABDDA4",
-  projection = "equirectangular", responsive = TRUE, width = NULL,
+  projection = "equirectangular", responsive = FALSE, width = NULL,
   height = NULL, elementId = NULL)
 }
 \arguments{
@@ -28,4 +28,3 @@ string and have \code{'px'} appended.}
 \description{
 Initiate a datamaps chart.
 }
-

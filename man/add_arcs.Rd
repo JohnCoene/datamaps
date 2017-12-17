@@ -31,4 +31,3 @@ states \%>\%
     add_arcs(ori.lon, ori.lat, des.lon, des.lat, strokeColor)
 
 }
-

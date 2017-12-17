@@ -38,4 +38,3 @@ edges \%>\%
                 animation.speed = 1000)
 
 }
-

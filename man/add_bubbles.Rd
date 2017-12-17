@@ -45,4 +45,3 @@ data \%>\%
     add_bubbles(lon, lat, values * 2, values, city, colors = c("red", "blue"))
 
 }
-

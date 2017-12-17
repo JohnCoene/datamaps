@@ -39,4 +39,3 @@ states \%>\%
     add_arcs_name(origin, target, strokeWidth, strokeColor)
 
 }
-

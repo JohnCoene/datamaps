@@ -4,11 +4,14 @@
 \alias{datamaps-shiny}
 \alias{datamapsOutput}
 \alias{renderDatamaps}
+\alias{datamapsProxy}
 \title{Shiny bindings for datamaps}
 \usage{
 datamapsOutput(outputId, width = "100\%", height = "400px")
 
 renderDatamaps(expr, env = parent.frame(), quoted = FALSE)
+
+datamapsProxy(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{outputId}{output variable to read from}
@@ -28,4 +31,3 @@ is useful if you want to save an expression in a variable.}
 Output and render functions for using datamaps within Shiny
 applications and interactive Rmd documents.
 }
-

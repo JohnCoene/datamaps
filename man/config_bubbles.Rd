@@ -62,4 +62,3 @@ coords \%>\%
                    highlight.fill.color = "green")
 
 }
-

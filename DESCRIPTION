@@ -1,6 +1,6 @@
 Package: datamaps
 Title: DataMaps htmlwidget
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
 Description: DataMaps htmlwidget for R.
 Depends:
@@ -10,6 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     htmlwidgets,
-    magrittr
+    magrittr,
+    shiny
 Suggests: RColorBrewer
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

@@ -39,4 +39,3 @@ data \%>\%
     add_arcs_name(origin, target, strokeColor)
 
 }
-

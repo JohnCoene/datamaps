@@ -22,4 +22,3 @@ data \%>\%
     add_legend()
 
 }
-

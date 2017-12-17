@@ -15,8 +15,9 @@
 #' @import htmlwidgets
 #' @importFrom grDevices colorRampPalette
 #'
+#' @rdname datamaps
 #' @export
-datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = TRUE, width = NULL,
+datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = FALSE, width = NULL,
                      height = NULL, elementId = NULL) {
 
   if(!missing(data))
@@ -28,6 +29,7 @@ datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "e
 
   # forward options using x
   x = list(
+    responsive = responsive,
     scope = tolower(scope),
     projection = projection,
     fills = list(defaultFill = default),
@@ -74,4 +76,14 @@ datamapsOutput <- function(outputId, width = '100%', height = '400px'){
 renderDatamaps <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, datamapsOutput, env, quoted = TRUE)
+}
+
+#' @rdname datamaps-shiny
+#' @export
+datamapsProxy <- function(id, session = shiny::getDefaultReactiveDomain()){
+
+  proxy <- list(id = id, session = session)
+  class(proxy) <- "datamapsProxy"
+
+  return(proxy)
 }
