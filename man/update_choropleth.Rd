@@ -6,10 +6,22 @@
 \usage{
 update_choropleth(proxy, locations, color, reset = FALSE, ...)
 }
+\arguments{
+\item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
+
+\item{locations}{column containing location names as \code{iso3c}.}
+
+\item{color}{column containing color of each \code{location}.}
+
+\item{reset}{reset previous changes to \code{default} color from \code{\link{datamaps}}.}
+
+\item{...}{any other variable to use for tooltip.}
+}
 \description{
 Dynamically add bubbles using Shiny.
 }
 \examples{
+\dontrun{
 library(shiny)
 
 ui <- fluidPage(
@@ -52,5 +64,6 @@ server <- function(input, output){
 }
 
 shinyApp(ui, server)
+}
 
 }

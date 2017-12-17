@@ -39,7 +39,11 @@ HTMLWidgets.widget({
           }
 
           if(x.hasOwnProperty('labels')){
-            chart.labels();
+            chart.labels(x.labels.options);
+          }
+
+          if(x.hasOwnProperty('graticule')){
+            chart.graticule();
           }
         }
 
@@ -51,8 +55,8 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        d3.select(window).on('resize', function() {
-          chart.resize();
+        $(window).on('resize', function() {
+           chart.resize();
         });
 
       }
@@ -88,7 +92,7 @@ if (HTMLWidgets.shinyMode) {
   Shiny.addCustomMessageHandler('update_labels',
     function(data) {
       var chart = getDatamapsObj(data.id);
-      chart.labels();
+      chart.labels(opts);
   });
 
   Shiny.addCustomMessageHandler('update_legend',
@@ -97,9 +101,15 @@ if (HTMLWidgets.shinyMode) {
       chart.legend();
   });
 
-  Shiny.addCustomMessageHandler('update_legend',
+  Shiny.addCustomMessageHandler('update_arcs',
     function(data) {
       var chart = getDatamapsObj(data.id);
       chart.arc(data.arcs);
+  });
+
+  Shiny.addCustomMessageHandler('delete_map',
+    function(data) {
+      var chart = getDatamapsObj(data.id);
+      chart.remove();
   });
 }

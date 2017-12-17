@@ -2,10 +2,76 @@
 % Please edit documentation in R/proxies.R
 \name{update_arcs}
 \alias{update_arcs}
+\alias{update_arcs_name}
 \title{Dynamically update arcs}
 \usage{
-update_arcs(p, origin.lon, origin.lat, destination.lon, destination.lat, ...)
+update_arcs(proxy, origin.lon, origin.lat, destination.lon, destination.lat,
+  ...)
+
+update_arcs_name(proxy, origin, destination, ...)
+}
+\arguments{
+\item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
+
+\item{origin.lon}{origin coordinates.}
+
+\item{origin.lat}{origin coordinates.}
+
+\item{destination.lon}{destination coordinates.}
+
+\item{destination.lat}{destination coordinates.}
+
+\item{...}{any other arguments to use as options.}
+
+\item{origin}{edges.}
+
+\item{destination}{edges.}
 }
 \description{
 Dynamically update arcs with Shiny.
+}
+\examples{
+\dontrun{
+library(shiny)
+
+ui <- fluidPage(
+
+  textInput(
+    "from",
+    "Origin",
+    value = "USA"
+  ),
+  textInput(
+    "to",
+    "Destination",
+    value = "RUS"
+  ),
+  actionButton(
+    "submit",
+    "Add arc"
+  ),
+  datamapsOutput("map")
+)
+
+server <- function(input, output){
+
+  arc <- reactive({
+    data.frame(from = input$from, to = input$to)
+  })
+
+ output$map <- renderDatamaps({
+   datamaps()
+ })
+
+ observeEvent(input$submit, {
+   datamapsProxy("map") \%>\%
+     add_data(arc()) \%>\%
+     update_arcs_name(from, to)
+ })
+
+}
+
+shinyApp(ui, server)
+}
+
 }

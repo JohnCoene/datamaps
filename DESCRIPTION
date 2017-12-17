@@ -10,7 +10,8 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     htmlwidgets,
-    magrittr,
+    magrittr
+Suggests: 
+    RColorBrewer,
     shiny
-Suggests: RColorBrewer
 RoxygenNote: 6.0.1

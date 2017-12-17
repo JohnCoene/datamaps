@@ -4,10 +4,21 @@
 \alias{add_labels}
 \title{Add labels}
 \usage{
-add_labels(p)
+add_labels(p, label.color = "#000", line.width = 1, font.size = 10,
+  font.family = "Verdana", ...)
 }
 \arguments{
-\item{p}{a datamaps object}
+\item{p}{a datamaps object.}
+
+\item{label.color}{label color.}
+
+\item{line.width}{width of line.}
+
+\item{font.size}{font size.}
+
+\item{font.family}{font family.}
+
+\item{...}{any other parameter.}
 }
 \description{
 Add labels
@@ -19,6 +30,6 @@ states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),
 states \%>\%
     datamaps("usa") \%>\%
     add_choropleth(st, val) \%>\%
-    add_labels()
+    add_labels(label.color = "blue")
 
 }

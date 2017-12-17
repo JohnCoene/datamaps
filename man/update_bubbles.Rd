@@ -6,10 +6,24 @@
 \usage{
 update_bubbles(proxy, longitude, latitude, radius, color, name, ...)
 }
+\arguments{
+\item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
+
+\item{longitude, latitude}{coordinates of bubbles.}
+
+\item{radius}{radius of bubbles.}
+
+\item{color}{color of bubbles.}
+
+\item{name}{name of bubbles.}
+
+\item{...}{any other variable to use in tooltip.}
+}
 \description{
 Dynamically add bubble using Shiny.
 }
 \examples{
+\dontrun{
 library(shiny)
 
 ui <- fluidPage(
@@ -70,5 +84,6 @@ server <- function(input, output){
 }
 
 shinyApp(ui, server)
+}
 
 }

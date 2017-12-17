@@ -6,10 +6,14 @@
 \usage{
 update_legend(proxy)
 }
+\arguments{
+\item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
+}
 \description{
 Dynamically update legend using Shiny
 }
 \examples{
+\dontrun{
 library(shiny)
 
 ui <- fluidPage(
@@ -37,5 +41,6 @@ server <- function(input, output){
 }
 
 shinyApp(ui, server)
+}
 
 }

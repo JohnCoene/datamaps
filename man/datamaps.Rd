@@ -28,3 +28,8 @@ string and have \code{'px'} appended.}
 \description{
 Initiate a datamaps chart.
 }
+\examples{
+datamaps(projection = "orthographic") \%>\%
+  add_graticule()
+
+}
