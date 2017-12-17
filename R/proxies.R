@@ -2,7 +2,15 @@
 #'
 #' Dynamically add bubble using Shiny.
 #'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#' @param longitude,latitude coordinates of bubbles.
+#' @param radius radius of bubbles.
+#' @param color color of bubbles.
+#' @param name name of bubbles.
+#' @param ... any other variable to use in tooltip.
+#'
 #' @examples
+#' \dontrun{
 #' library(shiny)
 #'
 #' ui <- fluidPage(
@@ -63,6 +71,7 @@
 #' }
 #'
 #' shinyApp(ui, server)
+#' }
 #'
 #' @export
 update_bubbles <- function(proxy, longitude, latitude, radius, color, name, ...){
@@ -92,7 +101,14 @@ update_bubbles <- function(proxy, longitude, latitude, radius, color, name, ...)
 #'
 #' Dynamically add bubbles using Shiny.
 #'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#' @param locations column containing location names as \code{iso3c}.
+#' @param color column containing color of each \code{location}.
+#' @param reset reset previous changes to \code{default} color from \code{\link{datamaps}}.
+#' @param ... any other variable to use for tooltip.
+#'
 #' @examples
+#' \dontrun{
 #' library(shiny)
 #'
 #' ui <- fluidPage(
@@ -135,6 +151,7 @@ update_bubbles <- function(proxy, longitude, latitude, radius, color, name, ...)
 #' }
 #'
 #' shinyApp(ui, server)
+#' }
 #'
 #' @export
 update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
@@ -163,7 +180,10 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
 #'
 #' Dynamically update labels using Shiny
 #'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#'
 #' @examples
+#' \dontrun{
 #' library(shiny)
 #'
 #' ui <- fluidPage(
@@ -191,14 +211,21 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
 #' }
 #'
 #' shinyApp(ui, server)
+#' }
 #'
 #' @export
-update_labels <- function(proxy){
+update_labels <- function(proxy, label.color = "#000", line.width = 1, font.size = 10, font.family = "Verdana", ...){
 
   if(!inherits(proxy, "datamapsProxy"))
     stop("must pass proxy, see datamapsProxy.")
 
-  data <- list(id = proxy$id)
+  opts <- list(...)
+  opts$labelColor <- label.color
+  opts$lineWidth <- line.width
+  opts$fontSize <- font.size
+  opts$fontFamily <- font.family
+
+  data <- list(id = proxy$id, opts = opts)
 
   proxy$session$sendCustomMessage("update_labels", data)
 
@@ -209,7 +236,10 @@ update_labels <- function(proxy){
 #'
 #' Dynamically update legend using Shiny
 #'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#'
 #' @examples
+#' \dontrun{
 #' library(shiny)
 #'
 #' ui <- fluidPage(
@@ -237,6 +267,7 @@ update_labels <- function(proxy){
 #' }
 #'
 #' shinyApp(ui, server)
+#' }
 #'
 #' @export
 update_legend <- function(proxy){
@@ -256,8 +287,57 @@ update_legend <- function(proxy){
 #'
 #' Dynamically update arcs with Shiny.
 #'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#' @inheritParams add_arcs
+#' @inheritParams add_arcs_name
+#'
+#' @examples
+#' \dontrun{
+#' library(shiny)
+#'
+#' ui <- fluidPage(
+#'
+#'   textInput(
+#'     "from",
+#'     "Origin",
+#'     value = "USA"
+#'   ),
+#'   textInput(
+#'     "to",
+#'     "Destination",
+#'     value = "RUS"
+#'   ),
+#'   actionButton(
+#'     "submit",
+#'     "Add arc"
+#'   ),
+#'   datamapsOutput("map")
+#' )
+#'
+#' server <- function(input, output){
+#'
+#'   arc <- reactive({
+#'     data.frame(from = input$from, to = input$to)
+#'   })
+#'
+#'  output$map <- renderDatamaps({
+#'    datamaps()
+#'  })
+#'
+#'  observeEvent(input$submit, {
+#'    datamapsProxy("map") %>%
+#'      add_data(arc()) %>%
+#'      update_arcs_name(from, to)
+#'  })
+#'
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
+#'
+#' @rdname update_arcs
 #' @export
-update_arcs <- function(p, origin.lon, origin.lat, destination.lon, destination.lat, ...){
+update_arcs <- function(proxy, origin.lon, origin.lat, destination.lon, destination.lat, ...){
 
   if(!inherits(proxy, "datamapsProxy"))
     stop("must pass proxy, see datamapsProxy.")
@@ -268,9 +348,63 @@ update_arcs <- function(p, origin.lon, origin.lat, destination.lon, destination.
   des.lon <- eval(substitute(destination.lon), data)
   des.lat <- eval(substitute(destination.lat), data)
 
-  data <- list(id = , arcs = arc_data__(ori.lon, ori.lat, des.lon, des.lat, ...))
+  data <- list(id = proxy$id, arcs = arc_data__(ori.lon, ori.lat, des.lon, des.lat, ...))
 
   proxy$session$sendCustomMessage("update_arcs", data)
+
+  return(proxy)
+}
+
+#' @rdname update_arcs
+#' @export
+update_arcs_name <- function(proxy, origin, destination, ...){
+
+  data <- get("data", envir = data_env)
+  ori <- eval(substitute(origin), data)
+  des <- eval(substitute(destination), data)
+
+  msg <- list(id = proxy$id, arcs = arc_data_(ori, des, ...))
+
+  print(msg)
+
+  proxy$session$sendCustomMessage("update_arcs", msg)
+
+  return(proxy)
+}
+
+#' Remove map
+#'
+#' Remove the map
+#'
+#' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#'
+#' @examples
+#' \dontrun{
+#' library(shiny)
+#'
+#' ui <- fluidPage(
+#'   actionButton(
+#'     "delete",
+#'     "Delete map"
+#'   ),
+#'   datamapsOutput("map")
+#' )
+#'
+#' server <- function(input, output){
+#'   output$map <- renderDatamaps({
+#'     datamaps()
+#'   })
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
+#'
+#' @export
+delete_map <- function(proxy){
+
+  msg <- list(id = proxy$id)
+
+  proxy$session$sendCustomMessage("delete_map", msg)
 
   return(proxy)
 }
