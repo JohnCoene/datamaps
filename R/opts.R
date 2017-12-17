@@ -19,7 +19,12 @@ add_legend <- function(p){
 
 #' Add labels
 #'
-#' @param p a datamaps object
+#' @param p a datamaps object.
+#' @param label.color label color.
+#' @param line.width width of line.
+#' @param font.size font size.
+#' @param font.family font family.
+#' @param ... any other parameter.
 #'
 #' @examples
 #' states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),
@@ -28,11 +33,18 @@ add_legend <- function(p){
 #' states %>%
 #'     datamaps("usa") %>%
 #'     add_choropleth(st, val) %>%
-#'     add_labels()
+#'     add_labels(label.color = "blue")
 #'
 #' @export
-add_labels <- function(p){
-  p$x$labels <- TRUE
+add_labels <- function(p, label.color = "#000", line.width = 1, font.size = 10, font.family = "Verdana", ...){
+
+  opts <- list(...)
+  opts$labelColor <- label.color
+  opts$lineWidth <- line.width
+  opts$fontSize <- font.size
+  opts$fontFamily <- font.family
+
+  p$x$labels$options <- opts
   p
 }
 
@@ -185,5 +197,19 @@ config_arcs <- function(p, stroke.color = '#DD1C77', stroke.width = 1, arc.sharp
 
   p$x$arcConfig <- append(p$x$arcConfig, opts)
 
+  p
+}
+
+#' Add graticule
+#'
+#' @param p a datamaps object.
+#'
+#' @examples
+#' datamaps(projection = "orthographic") %>%
+#'   add_graticule()
+#'
+#' @export
+add_graticule <- function(p){
+  p$x$graticule <- TRUE
   p
 }
