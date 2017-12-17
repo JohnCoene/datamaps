@@ -90,8 +90,6 @@ update_bubbles <- function(proxy, longitude, latitude, radius, color, name, ...)
 
   data <- list(id = proxy$id, bubbles = bubbles)
 
-  print(data)
-
   proxy$session$sendCustomMessage("update_bubbles", data)
 
   return(proxy)
@@ -168,8 +166,6 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
   update <- choro_data_(loc, col, ...)
 
   data <- list(id = proxy$id, update = list(data = update, reset = reset))
-
-  print(update)
 
   proxy$session$sendCustomMessage("update_choropleth", data)
 
