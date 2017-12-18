@@ -46,7 +46,7 @@ ui <- fluidPage(
    "value",
    "Value",
    min = 1,
-   max = 10,
+   max = 4,
    step = 1,
    value = 3
  ),

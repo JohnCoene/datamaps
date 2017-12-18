@@ -48,7 +48,7 @@ ui <- fluidPage(
   ),
   actionButton(
     "submit",
-    "Add arc"
+    "Draw arc"
   ),
   datamapsOutput("map")
 )
