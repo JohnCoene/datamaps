@@ -29,8 +29,8 @@ library(shiny)
 
 ui <- fluidPage(
   actionButton(
-    "show",
-    "Show labels"
+    "update",
+    "update labels"
   ),
   datamapsOutput("map")
 )
@@ -42,12 +42,13 @@ server <- function(input, output){
   output$map <- renderDatamaps({
     states \%>\%
       datamaps(scope = "usa", default = "lightgray") \%>\%
-      add_choropleth(st, val)
+      add_choropleth(st, val) \%>\% 
+      add_labels()
   })
 
   observeEvent(input$update, {
     datamapsProxy("map") \%>\%
-      update_labels() # update
+      update_labels(sample(c("blue", "red", "orange", "green", "white"), 1)) # update
   })
 }
 
