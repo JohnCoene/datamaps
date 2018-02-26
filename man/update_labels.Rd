@@ -9,6 +9,16 @@ update_labels(proxy, label.color = "#000", line.width = 1, font.size = 10,
 }
 \arguments{
 \item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
+
+\item{label.color}{color of label.}
+
+\item{line.width}{with of line.}
+
+\item{font.size}{size of font label.}
+
+\item{font.family}{family of font label.}
+
+\item{...}{any other option.}
 }
 \description{
 Dynamically update labels using Shiny

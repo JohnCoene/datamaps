@@ -177,6 +177,11 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
 #' Dynamically update labels using Shiny
 #'
 #' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
+#' @param label.color color of label.
+#' @param line.width with of line.
+#' @param font.size size of font label.
+#' @param font.family family of font label.
+#' @param ... any other option.
 #'
 #' @examples
 #' \dontrun{
@@ -184,8 +189,8 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
 #'
 #' ui <- fluidPage(
 #'   actionButton(
-#'     "show",
-#'     "Show labels"
+#'     "update",
+#'     "update labels"
 #'   ),
 #'   datamapsOutput("map")
 #' )
@@ -197,12 +202,13 @@ update_choropleth <- function(proxy, locations, color, reset = FALSE, ...){
 #'   output$map <- renderDatamaps({
 #'     states %>%
 #'       datamaps(scope = "usa", default = "lightgray") %>%
-#'       add_choropleth(st, val)
+#'       add_choropleth(st, val) %>% 
+#'       add_labels()
 #'   })
 #'
 #'   observeEvent(input$update, {
 #'     datamapsProxy("map") %>%
-#'       update_labels() # update
+#'       update_labels(sample(c("blue", "red", "orange", "green", "white"), 1)) # update
 #'   })
 #' }
 #'

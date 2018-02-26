@@ -92,7 +92,7 @@ if (HTMLWidgets.shinyMode) {
   Shiny.addCustomMessageHandler('update_labels',
     function(data) {
       var chart = getDatamapsObj(data.id);
-      chart.labels(opts);
+      chart.labels(data.opts);
   });
 
   Shiny.addCustomMessageHandler('update_legend',
