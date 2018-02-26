@@ -1,10 +1,8 @@
 Package: datamaps
-Title: Datamaps Htmlwidget
+Title: An htmlwidget for datamaps.js
 Version: 0.0.1
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
 Description: Datamaps htmlwidget for R.
-Depends:
-    R (>= 3.3.3)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
