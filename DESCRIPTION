@@ -1,9 +1,10 @@
 Package: datamaps
-Title: An Htmlwidget for Datamaps.js
+Title: Create Interactive Web Maps with the JavaScript 'Datamaps' Library
 Version: 0.0.1
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
-Description: Datamaps is an htmlwidget for datamaps.js to plot
-    interactive choropleth maps, and overlay arcs, or bubbles.
+Description: Created and customise interactive choropleth maps, and add overlay arcs, or bubbles. 
+    These maps can be used directly from the R console, from 'RStudio', in Shiny apps with proxies 
+    and R Markdown documents.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
