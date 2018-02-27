@@ -1,8 +1,9 @@
 Package: datamaps
-Title: An htmlwidget for datamaps.js
+Title: An Htmlwidget for Datamaps.js
 Version: 0.0.1
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
-Description: Datamaps htmlwidget for R.
+Description: Datamaps is an htmlwidget for datamaps.js to plot
+    interactive choropleth maps, and overlay arcs, or bubbles.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
