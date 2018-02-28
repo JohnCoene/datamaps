@@ -2,9 +2,9 @@ Package: datamaps
 Title: Create Interactive Web Maps with the 'JavaScript Datamaps' Library
 Version: 0.0.1
 Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
-Description: Create interactive choropleth maps, and customise with arcs, or bubbles. 
-    These maps can be used directly from the console, from 'RStudio', in 'Shiny' apps with proxies 
-    and R Markdown documents.
+Description: Create interactive choropleth maps, customise with arcs by from coordinates or region names, or bubbles. 
+    These maps can be used directly from the console, from 'RStudio', in 'Shiny' apps and 'R Markdown' documents. 'Shiny' 
+    proxies allow to interactively add arcs and bubbles, change choropleth values, or change labels.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -14,3 +14,5 @@ Imports:
 Suggests: 
     shiny
 RoxygenNote: 6.0.1
+URL: http://john-coene.com/datamaps
+BugReports: https://github.com/JohnCoene/datamaps/issues
