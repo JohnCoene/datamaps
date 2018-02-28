@@ -5,7 +5,7 @@
 
 ![datamaps](http://john-coene.com/img/datamaps_proxy.gif)
 
-R htmlwidget for [datamaps](http://datamaps.github.io/).
+R htmlwidget for [datamaps](http://datamaps.github.io/), plot choropleth, overlay arcs and bubbles, customise options, easily interact with Shiny proxies.
 
 * [Installation](#installation)
 * [Details](#info)
