@@ -44,7 +44,7 @@ config_bubbles(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
 \item{...}{any other parameter.}
 }
 \description{
-Configure bubbles
+Define options of the bubbles.
 }
 \examples{
 coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),

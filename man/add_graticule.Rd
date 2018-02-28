@@ -10,7 +10,7 @@ add_graticule(p)
 \item{p}{a datamaps object.}
 }
 \description{
-Add graticule
+Add graticule.
 }
 \examples{
 datamaps(projection = "orthographic") \%>\%

@@ -26,7 +26,7 @@ string and have \code{'px'} appended.}
 \item{elementId}{DOM id.}
 }
 \description{
-Initiate a datamaps chart.
+Setup a datamaps chart.
 }
 \examples{
 datamaps(projection = "orthographic") \%>\%

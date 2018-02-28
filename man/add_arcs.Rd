@@ -2,7 +2,7 @@
 % Please edit documentation in R/add.R
 \name{add_arcs}
 \alias{add_arcs}
-\title{Add arc}
+\title{Add arcs}
 \usage{
 add_arcs(p, origin.lon, origin.lat, destination.lon, destination.lat, ...)
 }
@@ -16,7 +16,7 @@ add_arcs(p, origin.lon, origin.lat, destination.lon, destination.lat, ...)
 \item{...}{any other arguments to use as options.}
 }
 \description{
-Add arc
+Add arcs by coordinates.
 }
 \examples{
 states <- data.frame(ori.lon = c(-97.03720, -87.90446),

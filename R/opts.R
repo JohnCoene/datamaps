@@ -1,5 +1,7 @@
 #' Add legend
 #'
+#' Add a legend to the map.
+#'
 #' @param p a datamaps object
 #'
 #' @examples
@@ -18,6 +20,8 @@ add_legend <- function(p){
 }
 
 #' Add labels
+#'
+#' Add data labels.
 #'
 #' @param p a datamaps object.
 #' @param label.color label color.
@@ -49,6 +53,8 @@ add_labels <- function(p, label.color = "#000", line.width = 1, font.size = 10, 
 }
 
 #' Configure map
+#'
+#' Define options of the map.
 #'
 #' @param p a datamaps object.
 #' @param popup.on.hover whether to show popover.
@@ -104,6 +110,8 @@ config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide
 }
 
 #' Configure bubbles
+#'
+#' Define options of the bubbles.
 #'
 #' @param p a datamaps object.
 #' @param popup.on.hover whether to show popover.
@@ -164,6 +172,8 @@ config_bubbles <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, 
 
 #' Configure arcs
 #'
+#' Define options of the arcs.
+#'
 #' @param p a datamaps object.
 #' @param stroke.color arc colors.
 #' @param stroke.width arc width.
@@ -201,6 +211,8 @@ config_arcs <- function(p, stroke.color = '#DD1C77', stroke.width = 1, arc.sharp
 }
 
 #' Add graticule
+#'
+#' Add graticule.
 #'
 #' @param p a datamaps object.
 #'

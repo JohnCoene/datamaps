@@ -2,7 +2,7 @@
 % Please edit documentation in R/add.R
 \name{add_arcs_name}
 \alias{add_arcs_name}
-\title{Add arc}
+\title{Add arcs}
 \usage{
 add_arcs_name(p, origin, destination, ...)
 }
@@ -14,7 +14,7 @@ add_arcs_name(p, origin, destination, ...)
 \item{...}{any other arguments to use as options.}
 }
 \description{
-Add arc
+Add arcs by name of country of state.
 }
 \examples{
 data <- data.frame(origin = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),

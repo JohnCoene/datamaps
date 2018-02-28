@@ -21,7 +21,7 @@ add_labels(p, label.color = "#000", line.width = 1, font.size = 10,
 \item{...}{any other parameter.}
 }
 \description{
-Add labels
+Add data labels.
 }
 \examples{
 states <- data.frame(st = c("AR", "NY", "CA", "IL", "CO", "MT", "TX"),

@@ -50,6 +50,8 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 
 #' Add bubbles
 #'
+#' Add bubbles to the map.
+#'
 #' @param p a datamaps object.
 #' @param longitude,latitude coordinates of bubbles.
 #' @param radius radius of bubbles.
@@ -97,6 +99,8 @@ add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors
 
 #' Add data
 #'
+#' Add a dataset.
+#'
 #' @param p a datamaps object.
 #' @param data data.frame.
 #'
@@ -136,7 +140,9 @@ add_data <- function(p, data) {
 }
 
 
-#' Add arc
+#' Add arcs
+#'
+#' Add arcs by name of country of state.
 #'
 #' @param p a datamaps object.
 #' @param origin,destination edges.
@@ -176,7 +182,9 @@ add_arcs_name <- function(p, origin, destination, ...){
   p
 }
 
-#' Add arc
+#' Add arcs
+#'
+#' Add arcs by coordinates.
 #'
 #' @param p a datamaps object.
 #' @param origin.lon,origin.lat origin coordinates.

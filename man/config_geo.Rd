@@ -41,7 +41,7 @@ config_geo(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
 \item{...}{any other parameter.}
 }
 \description{
-Configure map
+Define options of the map.
 }
 \examples{
 data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),

@@ -12,7 +12,7 @@ add_data(p, data)
 \item{data}{data.frame.}
 }
 \description{
-Add data
+Add a dataset.
 }
 \examples{
 coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),

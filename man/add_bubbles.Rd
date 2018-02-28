@@ -23,7 +23,7 @@ add_bubbles(p, longitude, latitude, radius, color, name, ...,
 \item{colors}{color palette.}
 }
 \description{
-Add bubbles
+Add bubbles to the map.
 }
 \examples{
 coords <- data.frame(city = c("London", "New York", "Beijing", "Sydney"),

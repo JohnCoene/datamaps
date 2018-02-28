@@ -10,7 +10,7 @@ add_legend(p)
 \item{p}{a datamaps object}
 }
 \description{
-Add legend
+Add a legend to the map.
 }
 \examples{
 data <- data.frame(name = c("USA", "FRA", "CHN", "RUS", "COG", "DZA"),

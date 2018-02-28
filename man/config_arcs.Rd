@@ -23,7 +23,7 @@ config_arcs(p, stroke.color = "#DD1C77", stroke.width = 1,
 \item{...}{any additional options.}
 }
 \description{
-Configure arcs
+Define options of the arcs.
 }
 \examples{
 edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM",

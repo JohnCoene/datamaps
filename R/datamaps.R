@@ -1,6 +1,6 @@
 #' Initiate map
 #'
-#' Initiate a datamaps chart.
+#' Setup a datamaps chart.
 #'
 #' @param data data.frame.
 #' @param scope map scope.

@@ -15,19 +15,15 @@ This is a new release, so there are no reverse dependencies.
 
 ## Previous submition feedback
 
-> Thanks, we see:
+> Thanks, please write package names and software names in single quotes (e.g. 'JavaScript Datamaps', 'Shiny') in title and description.
+> 
+> This information is redundant, since this is an R package:
+"These maps can be used directly from the R console"
+> 
+> Please write more about the provided functionality.
 >
-> Possibly mis-spelled words in DESCRIPTION:
->   Datamaps (2:26, 5:14)
->   Htmlwidget (2:11)
->   choropleth (6:17)
->   datamaps (5:44)
->   htmlwidget (5:29)
->   js (2:35, 5:53)
-> 
-> The Description field should not start with the package name,
->   'This package' or similar.
-> 
-> And indeed, please omit redndanciers as far as possible and single quoe software names in both title and Description fields while keeping the capitalization of the original software name.
+> Please fix and resubmit.
 
-*The above has been corrected*
+I apologise for the number of submition regarding this package, in all fairness I had used the DESCRIPTION of a similar package that made it onto CRAN as template: [leaflet](https://github.com/rstudio/leaflet/blob/master/DESCRIPTION).
+
+Thank you for your patience and your work supporting the community!
