@@ -39,7 +39,7 @@ devtools::install_github("JohnCoene/datamaps")
 
 Example proxy.
 
-[demo](http://shiny.john-coene.com/datamaps/)
+#### [demo](http://shiny.john-coene.com/datamaps/)
 
 ```R
 library(shiny)
