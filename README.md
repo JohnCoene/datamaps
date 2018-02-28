@@ -7,6 +7,12 @@
 
 R htmlwidget for [datamaps](http://datamaps.github.io/).
 
+* [Installation](#installation)
+* [Details](#info)
+* [Examples](#examples)
+* [Shiny Proxies](#shiny-proxies)
+* [Proxies demo](http://shiny.john-coene.com/datamaps/)
+
 ## Installation
 
 ```R
@@ -19,9 +25,21 @@ devtools::install_github("JohnCoene/datamaps")
 * See [website](http://john-coene.com/datamaps) for demos. 
 * Includes proxies to update the visualisation without re-drawing entire map.
 
+## Shiny Proxies
+
+* `update_bubbles` - update bubbles.
+* `update_choropleth` - update choropleth values.
+* `update_labels` - update labels.
+* `update_legend` - update the legend.
+* `update_arcs` - update arcs by coordinates.
+* `update_arcs_name` - update arcs by name.
+* `delete_map` - delete the map.
+
 ## Examples
 
 Example proxy.
+
+[demo](http://shiny.john-coene.com/datamaps/)
 
 ```R
 library(shiny)
