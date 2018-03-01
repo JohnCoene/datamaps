@@ -2,6 +2,7 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/JohnCoene/datamaps.svg?branch=master)](https://travis-ci.org/JohnCoene/datamaps)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/datamaps?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/datamaps)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/datamaps)](https://cran.r-project.org/package=datamaps)
 
 ![datamaps](http://john-coene.com/img/datamaps_proxy.gif)
 
