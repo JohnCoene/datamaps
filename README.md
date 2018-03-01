@@ -17,7 +17,10 @@ R htmlwidget for [datamaps](http://datamaps.github.io/), plot choropleth, overla
 ## Installation
 
 ```R
-# install.packages("devtools")
+# CRAN release
+install.packages("datamaps")
+
+# Development version
 devtools::install_github("JohnCoene/datamaps")
 ```
 
