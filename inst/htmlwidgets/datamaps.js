@@ -6,13 +6,11 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var chart = null;
+    var chart;
 
     return {
 
       renderValue: function(x) {
-
-        if(chart === null){
 
           chart = new Datamap({
               element: document.getElementById(el.id),
@@ -45,7 +43,6 @@ HTMLWidgets.widget({
           if(x.hasOwnProperty('graticule')){
             chart.graticule();
           }
-        }
 
       },
 
@@ -54,10 +51,11 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-
-        $(window).on('resize', function() {
-           chart.resize();
-        });
+        if(chart){
+          $(window).on('resize', function() {
+             chart.resize();
+          });
+        }
 
       }
 
