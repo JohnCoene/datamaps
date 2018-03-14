@@ -51,12 +51,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        if(chart){
-          $(window).on('resize', function() {
-             chart.resize();
-          });
-        }
-
+          chart.resize();
       }
 
     };
