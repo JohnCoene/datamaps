@@ -12,7 +12,8 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-          chart = new Datamap({
+          if(!chart){
+            chart = new Datamap({
               element: document.getElementById(el.id),
               scope: x.scope,
               projection: x.projection,
@@ -23,6 +24,23 @@ HTMLWidgets.widget({
               fills: x.fills,
               data: x.data
           });
+          } else {
+            if(HTMLWidgets.shinyMode){
+              var dom = document.getElementById(el.id);
+              dom.innerHTML = '';
+            chart = new Datamap({
+              element: document.getElementById(el.id),
+              scope: x.scope,
+              projection: x.projection,
+              responsive: x.responsive,
+              geographyConfig: x.geographyConfig,
+              bubblesConfig: x.bubblesConfig,
+              arcConfig: x.arcConfig,
+              fills: x.fills,
+              data: x.data
+          });
+            }
+          }
 
           if(x.hasOwnProperty('bubbles')){
             chart.bubbles(x.bubbles);
