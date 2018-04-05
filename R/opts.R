@@ -69,6 +69,7 @@ add_labels <- function(p, label.color = "#000", line.width = 1, font.size = 10, 
 #' @param highlight.border.opacity bubbles opacity on hover.
 #' @param highlight.border.color bubble's border opacity on hover.
 #' @param highlight.fill.opacity bubble's opacity on hover.
+#' @param data.url topo.json data url.
 #' @param ... any other parameter.
 #'
 #' @examples
@@ -90,7 +91,7 @@ add_labels <- function(p, label.color = "#000", line.width = 1, font.size = 10, 
 config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide.antarctica = TRUE, hide.hawaii.and.alaska = FALSE,
                        border.width = 1, border.opacity = 1, border.color = "#FDFDFD", highlight.fill.color = "#FC8D59",
                        highlight.border.opacity = 1, highlight.border.color = "rgba(250, 15, 160, 0.2)",
-                       highlight.fill.opacity = 0.85, highlight.border.width = 2, ...){
+                       highlight.fill.opacity = 0.85, highlight.border.width = 2, data.url = NULL, ...){
 
   opts <- list(...)
   opts$hideAntarctica <- hide.antarctica
@@ -105,6 +106,7 @@ config_geo <- function(p, popup.on.hover = TRUE, highlight.on.hover = TRUE, hide
   opts$highlightBorderWidth <- highlight.border.width
 
   p$x$geographyConfig <- append(p$x$geographyConfig, opts)
+  if(!is.null(data.url)) p$x$geographyConfig$dataUrl <- data.url
 
   p
 }
@@ -223,5 +225,45 @@ config_arcs <- function(p, stroke.color = '#DD1C77', stroke.width = 1, arc.sharp
 #' @export
 add_graticule <- function(p){
   p$x$graticule <- TRUE
+  p
+}
+
+
+#' Set projection
+#' 
+#' @param p a datamaps object.
+#' @param fun a JavaScript function.
+#' 
+#' @note Does not work in RStudio viewer, open in browser.
+#' 
+#' @examples 
+#' \dontrun{
+#' topo <- paste0("https://rawgit.com/Anujarya300/bubble_maps/",
+#'   "master/data/geography-data/india.topo.json")
+#'   
+#' data %>% 
+#'   datamaps(scope = "india") %>% 
+#'   add_choropleth(country, values) %>% 
+#'   config_geo(data.url = topo) %>% 
+#'   set_projection(htmlwidgets::JS('
+#'   function (element) {
+#'     var projection = d3.geo.mercator()
+#'     .center([78.9629, 23.5937])
+#'     .scale(1000);
+#'     var path = d3.geo.path().projection(projection);
+#'     return { path: path, projection: projection };
+#'   }
+#'   ')
+#'   )
+#' }
+#' 
+#' @seealso \href{documentation}{https://github.com/Anujarya300/bubble_maps}
+#' 
+#' @export
+set_projection <- function(p, fun = htmlwidgets::JS()){
+  if(missing(p) || missing(fun))
+    stop("must pass p and fun", call. = FALSE)
+  
+  p$x$setProjection <- fun
   p
 }

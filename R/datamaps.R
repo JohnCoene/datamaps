@@ -27,16 +27,14 @@ datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "e
   if(!missing(data))
     assign("data", data, envir = data_env)
 
-  if(!tolower(scope) %in% c("usa", "world")) stop("incorrect scope, see details", call. = FALSE)
-
   # forward options using x
   x = list(
     responsive = responsive,
     scope = tolower(scope),
     projection = projection,
     fills = list(defaultFill = default),
-    geographyConfig = list(dataUrl = NULL)
-    #,bubblesConfig = list(key = "JSON.stringify")
+    geographyConfig = list(dataUrl = NULL),
+    setProjection = NULL
   )
 
   attr(x, 'TOJSON_ARGS') <- list(keep_vec_names = TRUE)

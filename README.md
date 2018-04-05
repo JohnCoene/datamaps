@@ -31,6 +31,12 @@ devtools::install_github("JohnCoene/datamaps")
 * See [website](http://john-coene.com/datamaps) for demos. 
 * Includes proxies to update the visualisation without re-drawing entire map.
 
+**New in dev version**
+
+* Fixed `shiny` bug where map would get redrawn instead of updated.
+* Resizing fixed.
+* Added support for custom [topo.json](https://github.com/topojson/topojson), see `set_projection`
+
 ## Shiny Proxies
 
 * `update_bubbles` - update bubbles.

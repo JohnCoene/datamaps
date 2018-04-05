@@ -23,7 +23,8 @@ HTMLWidgets.widget({
               bubblesConfig: x.bubblesConfig,
               arcConfig: x.arcConfig,
               fills: x.fills,
-              data: x.data
+              data: x.data,
+              setProjection: x.setProjection
           });
 
           if(x.hasOwnProperty('bubbles')){
@@ -55,9 +56,9 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        $(window).on('resize', function() {
+         if(chart != 'null'){
            chart.resize();
-        });
+         }
 
       }
 
