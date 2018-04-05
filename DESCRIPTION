@@ -11,8 +11,14 @@ LazyData: true
 Imports:
     htmlwidgets,
     magrittr
-Suggests: 
-    shiny
+Suggests:
+    shiny,
+    knitr,
+    rmarkdown,
+    RColorBrewer,
+    countrycode,
+    dplyr
 RoxygenNote: 6.0.1
 URL: http://john-coene.com/datamaps
 BugReports: https://github.com/JohnCoene/datamaps/issues
+VignetteBuilder: knitr

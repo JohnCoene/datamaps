@@ -1,0 +1,14 @@
+url: https://datamaps.john-coene.com
+
+template:
+  params:
+    bootswatch: journal
+    ganalytics: UA-74544116-1
+    
+development:
+  mode: release
+  
+authors:
+  John Coene:
+    href: http://john-coene.com
+

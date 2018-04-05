@@ -237,13 +237,14 @@ add_graticule <- function(p){
 #' @note Does not work in RStudio viewer, open in browser.
 #' 
 #' @examples 
-#' \dontrun{
 #' topo <- paste0("https://rawgit.com/Anujarya300/bubble_maps/",
 #'   "master/data/geography-data/india.topo.json")
 #'   
+#' data <- data.frame(state = c("JH", "MH"), value = c(55, 28))
+#'   
 #' data %>% 
 #'   datamaps(scope = "india") %>% 
-#'   add_choropleth(country, values) %>% 
+#'   add_choropleth(state, value) %>% 
 #'   config_geo(data.url = topo) %>% 
 #'   set_projection(htmlwidgets::JS('
 #'   function (element) {
@@ -255,7 +256,6 @@ add_graticule <- function(p){
 #'   }
 #'   ')
 #'   )
-#' }
 #' 
 #' @seealso \href{documentation}{https://github.com/Anujarya300/bubble_maps}
 #' 

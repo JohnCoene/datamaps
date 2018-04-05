@@ -46,7 +46,12 @@ datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "e
     width = width,
     height = height,
     package = 'datamaps',
-    elementId = elementId
+    elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.padding = 0,
+      defaultWidth = "100%",
+      browser.fill = TRUE
+    )
   )
 }
 
