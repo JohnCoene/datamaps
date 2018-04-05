@@ -28,7 +28,7 @@ devtools::install_github("JohnCoene/datamaps")
 
 ## Info
 
-* See [website](http://john-coene.com/datamaps) for demos. 
+* See [website](http://datamaps.john-coene.com/) for demos. 
 * Includes proxies to update the visualisation without re-drawing entire map.
 * See NEWS.md for new features and bug fixes
 
