@@ -5,8 +5,8 @@
 \title{Initiate map}
 \usage{
 datamaps(data, scope = "world", default = "#ABDDA4",
-  projection = "equirectangular", responsive = FALSE, width = NULL,
-  height = NULL, elementId = NULL)
+  projection = "equirectangular", responsive = TRUE, width = "100\%",
+  height = "100\%", elementId = NULL)
 }
 \arguments{
 \item{data}{data.frame.}

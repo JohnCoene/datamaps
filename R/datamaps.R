@@ -21,8 +21,8 @@
 #'
 #' @rdname datamaps
 #' @export
-datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = FALSE, width = NULL,
-                     height = NULL, elementId = NULL) {
+datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = TRUE, width = "100%",
+                     height = "100%", elementId = NULL) {
 
   if(!missing(data))
     assign("data", data, envir = data_env)
