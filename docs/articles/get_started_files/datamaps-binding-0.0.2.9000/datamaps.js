@@ -6,15 +6,14 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var chart = null;
+    var chart;
 
     return {
 
       renderValue: function(x) {
 
-        if(chart === null){
-
-          chart = new Datamap({
+          if(!chart){
+            chart = new Datamap({
               element: document.getElementById(el.id),
               scope: x.scope,
               projection: x.projection,
@@ -26,6 +25,24 @@ HTMLWidgets.widget({
               data: x.data,
               setProjection: x.setProjection
           });
+          } else {
+            if(HTMLWidgets.shinyMode){
+              var dom = document.getElementById(el.id);
+              dom.innerHTML = '';
+            chart = new Datamap({
+              element: document.getElementById(el.id),
+              scope: x.scope,
+              projection: x.projection,
+              responsive: x.responsive,
+              geographyConfig: x.geographyConfig,
+              bubblesConfig: x.bubblesConfig,
+              arcConfig: x.arcConfig,
+              fills: x.fills,
+              data: x.data,
+              setProjection: x.setProjection
+          });
+            }
+          }
 
           if(x.hasOwnProperty('bubbles')){
             chart.bubbles(x.bubbles);
@@ -46,7 +63,6 @@ HTMLWidgets.widget({
           if(x.hasOwnProperty('graticule')){
             chart.graticule();
           }
-        }
 
       },
 

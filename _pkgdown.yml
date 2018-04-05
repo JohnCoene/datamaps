@@ -8,6 +8,19 @@ template:
 development:
   mode: release
   
+navbar:
+  title: "datamaps"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Get Started"
+      href: articles/get_started.html
+    - text: "Reference"
+      href: "reference/"
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/JohnCoene/datamaps
+  
 authors:
   John Coene:
     href: http://john-coene.com

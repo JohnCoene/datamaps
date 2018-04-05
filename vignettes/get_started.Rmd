@@ -28,7 +28,7 @@ st <- c("AR", "NY", "CA", "IL", "CO", "MT", "TX", "OK", "AL", "NM", "NV", "NC", 
 states <- data.frame(from = st, to = sample(st, 14))
 
 states %>%
-    datamaps(scope = "usa", height = "400") %>% # intiate map
+    datamaps(scope = "usa", height = "400", width = "100%") %>% # intiate map
     add_arcs_name(from, to) %>% # add arcs layers 
     add_labels() # add state labels
 ```
@@ -42,7 +42,7 @@ cn <- cn[!is.na(cn)]
 data <- data.frame(name = cn, color = ceiling(runif(length(cn), 1, 50)))
 
 data %>%
-  datamaps(height = "400") %>%
+  datamaps(height = "400", width = "100%") %>%
   add_choropleth(name, color)
 ```
 
@@ -67,7 +67,7 @@ continents <- sesh %>%
          lat = c(7.401962, 19.432608, 10.762622, 48.210033))
 
 sesh %>% 
-  datamaps(default = "lightgray", height = "400") %>% # initiate map
+  datamaps(default = "lightgray", height = "400", width = "100%") %>% # initiate map
   add_choropleth(iso3c, Sessions, colors = RColorBrewer::brewer.pal(5, "YlOrRd")) %>% # add chorpleth layer
   add_data(continents) %>% # add continent dataset
   add_bubbles(long, lat, log(Sessions) * 5, continent, continent, colors = RColorBrewer::brewer.pal(4, "Set1")) # add continent bubbles
@@ -80,7 +80,7 @@ data <- data.frame(name = c("USA", "CAN", "BRA", "ARG", "MEX", "CUB", "BOL"),
                    color = round(runif(7, 1, 10)))
 
 data %>%
-  datamaps(projection = "orthographic", height = "400") %>%
+  datamaps(projection = "orthographic", height = "400", width = "100%") %>%
   add_choropleth(name, color, colors = c("skyblue", "yellow", "orangered")) %>% 
   add_graticule() 
 ```
@@ -104,7 +104,7 @@ edges <- data.frame(origin = c("USA", "FRA", "BGD", "ETH", "KHM", "GRD",
     strokeColor = rep(c("gray", "black"), 5))
 
 data %>%
-    datamaps(default = "lightgray", height = "400") %>%
+    datamaps(default = "lightgray", height = "400", width = "100%") %>%
     add_choropleth(name, color) %>%
     add_data(coords) %>%
     add_bubbles(lon, lat, values, values, city, colors = c("skyblue", "darkblue")) %>%
@@ -123,7 +123,7 @@ topo <- paste0(
 data <- data.frame(state = c("JH", "MH"), value = c(55, 28))
   
 data %>% 
-  datamaps(scope = "india", height = "500") %>% 
+  datamaps(scope = "india", height = "600", width = "100%") %>% 
   add_choropleth(state, value) %>% 
   config_geo(data.url = topo) %>% 
   set_projection(htmlwidgets::JS('

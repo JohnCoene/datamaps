@@ -22,7 +22,8 @@ HTMLWidgets.widget({
               bubblesConfig: x.bubblesConfig,
               arcConfig: x.arcConfig,
               fills: x.fills,
-              data: x.data
+              data: x.data,
+              setProjection: x.setProjection
           });
           } else {
             if(HTMLWidgets.shinyMode){
@@ -70,15 +71,11 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-<<<<<<< HEAD
 
          if(chart != 'null'){
            chart.resize();
          }
 
-=======
-          chart.resize();
->>>>>>> 1d7adf4e250de037b258b8181a4c9bab9b1f78b7
       }
 
     };
