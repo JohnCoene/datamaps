@@ -3,3 +3,4 @@
 .RData
 datamaps.Rproj
 inst/doc
+/revdep/.cache.rds
