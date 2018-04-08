@@ -36,14 +36,12 @@ states %>%
 ### Examples
 
 ```{r}
-cn <- unique(countrycode::countrycode_data$iso3c)
-cn <- cn[!is.na(cn)]
-
-data <- data.frame(name = cn, color = ceiling(runif(length(cn), 1, 50)))
-
-data %>%
-  datamaps(height = "400", width = "100%") %>%
-  add_choropleth(name, color)
+data.frame(
+  state = state.abb,
+  area = state.area
+) %>% 
+  datamaps(scope = "usa", height = "400", width = "100%") %>%
+  add_choropleth(state, area)
 ```
 
 Combine types.
