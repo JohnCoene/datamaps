@@ -5,7 +5,7 @@
 [![CRAN](https://img.shields.io/cran/v/datamaps.svg)](https://img.shields.io/cran/v/datamaps.svg)
 [![CRAN_Status_Badge](http://cranlogs.r-pkg.org/badges/grand-total/datamaps)](http://cranlogs.r-pkg.org/badges/grand-total/datamaps)
 
-![datamaps](http://john-coene.com/img/datamaps_proxy.gif)
+![proxies](https://raw.githubusercontent.com/JohnCoene/projects/master/img/datamaps_proxy.gif)
 
 R htmlwidget for [datamaps](http://datamaps.github.io/), plot choropleth, overlay arcs and bubbles, customise options, easily interact with Shiny proxies.
 
