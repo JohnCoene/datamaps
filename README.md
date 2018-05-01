@@ -14,7 +14,7 @@ R htmlwidget for [datamaps](http://datamaps.github.io/), plot choropleth, overla
 * [Examples](#examples)
 * [Shiny Proxies](#shiny-proxies)
 * [Proxies demo](http://shiny.john-coene.com/datamaps/)
-* [Website](http://john-coene.com/datamaps)
+* [Website](http://datamaps.john-coene.com)
 
 ## Installation
 
