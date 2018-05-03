@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Add bubbles — add_bubbles" />
 
 <meta property="og:description" content="Add bubbles to the map." />
@@ -40,19 +43,15 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-74544116-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-74544116-1');
 </script>
-
-
 
   </head>
 
@@ -69,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datamaps</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.3.9000</span>
       </span>
     </div>
 
@@ -107,14 +106,17 @@
     <div class="page-header">
     <h1>Add bubbles</h1>
     
+    <div class="hidden name"><code>add_bubbles.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Add bubbles to the map.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>add_bubbles</span>(<span class='no'>p</span>, <span class='no'>longitude</span>, <span class='no'>latitude</span>, <span class='no'>radius</span>, <span class='no'>color</span>, <span class='no'>name</span>, <span class='no'>...</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#FFEDA0"</span>, <span class='st'>"#FEB24C"</span>, <span class='st'>"#F03B20"</span>))</pre>
+    <pre class="usage"><span class='fu'>add_bubbles</span>(<span class='no'>p</span>, <span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>radius</span>, <span class='no'>color</span>, <span class='no'>name</span>, <span class='no'>...</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#FFEDA0"</span>,
+  <span class='st'>"#FEB24C"</span>, <span class='st'>"#F03B20"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -124,7 +126,7 @@
       <td><p>a datamaps object.</p></td>
     </tr>
     <tr>
-      <th>longitude, latitude</th>
+      <th>lon, lat</th>
       <td><p>coordinates of bubbles.</p></td>
     </tr>
     <tr>
@@ -158,7 +160,8 @@
 
 <span class='no'>coords</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='datamaps.html'>datamaps</a></span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_bubbles</span>(<span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>values</span> * <span class='fl'>2</span>, <span class='no'>values</span>, <span class='no'>city</span>)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+    <span class='fu'>add_bubbles</span>(<span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>values</span> * <span class='fl'>2</span>, <span class='no'>values</span>, <span class='no'>city</span>)
+
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"USA"</span>, <span class='st'>"FRA"</span>, <span class='st'>"CHN"</span>, <span class='st'>"RUS"</span>, <span class='st'>"COG"</span>, <span class='st'>"DZA"</span>),
     <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>round</span>(<span class='fu'>runif</span>(<span class='fl'>6</span>, <span class='fl'>1</span>, <span class='fl'>10</span>)))
 
@@ -166,8 +169,7 @@
     <span class='fu'><a href='datamaps.html'>datamaps</a></span>(<span class='kw'>default</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='add_choropleth.html'>add_choropleth</a></span>(<span class='no'>name</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='add_data.html'>add_data</a></span>(<span class='no'>coords</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_bubbles</span>(<span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>values</span> * <span class='fl'>2</span>, <span class='no'>values</span>, <span class='no'>city</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"red"</span>, <span class='st'>"blue"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+    <span class='fu'>add_bubbles</span>(<span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>values</span> * <span class='fl'>2</span>, <span class='no'>values</span>, <span class='no'>city</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"red"</span>, <span class='st'>"blue"</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Add labels — add_labels" />
 
 <meta property="og:description" content="Add data labels." />
@@ -40,19 +43,15 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-74544116-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-74544116-1');
 </script>
-
-
 
   </head>
 
@@ -69,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datamaps</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.3.9000</span>
       </span>
     </div>
 
@@ -107,11 +106,14 @@
     <div class="page-header">
     <h1>Add labels</h1>
     
+    <div class="hidden name"><code>add_labels.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Add data labels.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>add_labels</span>(<span class='no'>p</span>, <span class='kw'>label.color</span> <span class='kw'>=</span> <span class='st'>"#000"</span>, <span class='kw'>line.width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>font.size</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='kw'>font.family</span> <span class='kw'>=</span> <span class='st'>"Verdana"</span>, <span class='no'>...</span>)</pre>
@@ -153,8 +155,7 @@
 <span class='no'>states</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='datamaps.html'>datamaps</a></span>(<span class='st'>"usa"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='add_choropleth.html'>add_choropleth</a></span>(<span class='no'>st</span>, <span class='no'>val</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_labels</span>(<span class='kw'>label.color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+    <span class='fu'>add_labels</span>(<span class='kw'>label.color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

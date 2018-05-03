@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Add arcs — add_arcs" />
 
 <meta property="og:description" content="Add arcs by coordinates." />
@@ -40,19 +43,15 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-74544116-1', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-74544116-1');
 </script>
-
-
 
   </head>
 
@@ -69,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">datamaps</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.3.9000</span>
       </span>
     </div>
 
@@ -107,11 +106,14 @@
     <div class="page-header">
     <h1>Add arcs</h1>
     
+    <div class="hidden name"><code>add_arcs.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Add arcs by coordinates.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>add_arcs</span>(<span class='no'>p</span>, <span class='no'>origin.lon</span>, <span class='no'>origin.lat</span>, <span class='no'>destination.lon</span>, <span class='no'>destination.lat</span>, <span class='no'>...</span>)</pre>
     
@@ -147,8 +149,7 @@
 
 <span class='no'>states</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='datamaps.html'>datamaps</a></span>(<span class='kw'>scope</span> <span class='kw'>=</span> <span class='st'>"USA"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_arcs</span>(<span class='no'>ori.lon</span>, <span class='no'>ori.lat</span>, <span class='no'>des.lon</span>, <span class='no'>des.lat</span>, <span class='no'>strokeColor</span>)</div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+    <span class='fu'>add_arcs</span>(<span class='no'>ori.lon</span>, <span class='no'>ori.lat</span>, <span class='no'>des.lon</span>, <span class='no'>des.lat</span>, <span class='no'>strokeColor</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

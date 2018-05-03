@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dynamically update arcs — update_arcs • datamaps</title>
+<title>Add icons — add_icons • datamaps</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Dynamically update arcs — update_arcs" />
+<meta property="og:title" content="Add icons — add_icons" />
 
-<meta property="og:description" content="Dynamically update arcs with Shiny." />
+<meta property="og:description" content="Add icons at coordinates." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,110 +104,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dynamically update arcs</h1>
+    <h1>Add icons</h1>
     
-    <div class="hidden name"><code>update_arcs.Rd</code></div>
+    <div class="hidden name"><code>icons-plugin.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Dynamically update arcs with Shiny.</p>
+    <p>Add icons at coordinates.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>update_arcs</span>(<span class='no'>proxy</span>, <span class='no'>origin.lon</span>, <span class='no'>origin.lat</span>, <span class='no'>destination.lon</span>, <span class='no'>destination.lat</span>,
-  <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>add_icons</span>(<span class='no'>p</span>, <span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>...</span>)
 
-<span class='fu'>update_arcs_name</span>(<span class='no'>proxy</span>, <span class='no'>origin</span>, <span class='no'>destination</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>icons_options</span>(<span class='no'>p</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"datamaps-icon"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>proxy</th>
-      <td><p>a proxy as returned by <code><a href='datamaps-shiny.html'>datamapsProxy</a></code>.</p></td>
+      <th>p</th>
+      <td><p>a datamaps object.</p></td>
     </tr>
     <tr>
-      <th>origin.lon</th>
-      <td><p>origin coordinates.</p></td>
-    </tr>
-    <tr>
-      <th>origin.lat</th>
-      <td><p>origin coordinates.</p></td>
-    </tr>
-    <tr>
-      <th>destination.lon</th>
-      <td><p>destination coordinates.</p></td>
-    </tr>
-    <tr>
-      <th>destination.lat</th>
-      <td><p>destination coordinates.</p></td>
+      <th>lon, lat</th>
+      <td><p>coordinates.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>any other arguments to use as options.</p></td>
+      <td><p>any other parameter.</p></td>
     </tr>
     <tr>
-      <th>origin</th>
-      <td><p>edges.</p></td>
-    </tr>
-    <tr>
-      <th>destination</th>
-      <td><p>edges.</p></td>
+      <th>class</th>
+      <td><p>a valid CSS class.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://github.com/jdlubrano/datamaps-icons-plugin'>Plugin documentation</a></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>library</span>(<span class='no'>shiny</span>)
-
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(
-
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/textInput'>textInput</a></span>(
-    <span class='st'>"from"</span>,
-    <span class='st'>"Origin"</span>,
-    <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"USA"</span>
-  ),
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/textInput'>textInput</a></span>(
-    <span class='st'>"to"</span>,
-    <span class='st'>"Destination"</span>,
-    <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"RUS"</span>
-  ),
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(
-    <span class='st'>"submit"</span>,
-    <span class='st'>"Draw arc"</span>
-  ),
-  <span class='fu'><a href='datamaps-shiny.html'>datamapsOutput</a></span>(<span class='st'>"map"</span>)
+    <pre class="examples"><div class='input'><span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"London"</span>, <span class='st'>"New York"</span>, <span class='st'>"Beijing"</span>, <span class='st'>"Sydney"</span>),
+  <span class='kw'>lon</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>0.1167218</span>, -<span class='fl'>73.98002</span>, <span class='fl'>116.3883</span>, <span class='fl'>151.18518</span>),
+  <span class='kw'>lat</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>51.49999</span>, <span class='fl'>40.74998</span>, <span class='fl'>39.92889</span>, -<span class='fl'>33.92001</span>)
 )
 
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>){
-
-  <span class='no'>arc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/reactive'>reactive</a></span>({
-    <span class='fu'>data.frame</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='no'>input</span>$<span class='no'>from</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>input</span>$<span class='no'>to</span>)
-  })
-
- <span class='no'>output</span>$<span class='no'>map</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='datamaps-shiny.html'>renderDatamaps</a></span>({
-   <span class='fu'><a href='datamaps.html'>datamaps</a></span>()
- })
-
- <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>submit</span>, {
-   <span class='fu'><a href='datamaps-shiny.html'>datamapsProxy</a></span>(<span class='st'>"map"</span>) <span class='kw'>%&gt;%</span>
-     <span class='fu'><a href='add_data.html'>add_data</a></span>(<span class='fu'>arc</span>()) <span class='kw'>%&gt;%</span>
-     <span class='fu'>update_arcs_name</span>(<span class='no'>from</span>, <span class='no'>to</span>)
- })
-
-}
-
-<span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+<span class='no'>coords</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='datamaps.html'>datamaps</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_icons</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

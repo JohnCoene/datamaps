@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add arcs — add_arcs_name • datamaps</title>
+<title>Add markers — add_markers • datamaps</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Add arcs — add_arcs_name" />
+<meta property="og:title" content="Add markers — add_markers" />
 
-<meta property="og:description" content="Add arcs by name of country of state." />
+<meta property="og:description" content="Add custom markers at coordinates." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,18 +104,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add arcs</h1>
+    <h1>Add markers</h1>
     
-    <div class="hidden name"><code>add_arcs_name.Rd</code></div>
+    <div class="hidden name"><code>markers-plugin.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add arcs by name of country of state.</p>
+    <p>Add custom markers at coordinates.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_arcs_name</span>(<span class='no'>p</span>, <span class='no'>origin</span>, <span class='no'>destination</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>add_markers</span>(<span class='no'>p</span>, <span class='no'>lon</span>, <span class='no'>lat</span>, <span class='no'>...</span>)
+
+<span class='fu'>markers_options</span>(<span class='no'>p</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,43 +127,57 @@
       <td><p>a datamaps object.</p></td>
     </tr>
     <tr>
-      <th>origin, destination</th>
-      <td><p>edges.</p></td>
+      <th>lon, lat</th>
+      <td><p>coordinates.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>any other arguments to use as options.</p></td>
+      <td><p>any other parameter.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Icons may not show in RStudio viewer, open in browser.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://github.com/arshad/datamaps-custom-marker'>Plugin documentation</a></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>origin</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"USA"</span>, <span class='st'>"FRA"</span>, <span class='st'>"CHN"</span>, <span class='st'>"RUS"</span>, <span class='st'>"COG"</span>, <span class='st'>"DZA"</span>),
-    <span class='kw'>target</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"FRA"</span>, <span class='st'>"RUS"</span>, <span class='st'>"BEL"</span>, <span class='st'>"CAF"</span>, <span class='st'>"VEN"</span>, <span class='st'>"SWZ"</span>),
-    <span class='kw'>greatArc</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>), <span class='fl'>3</span>),
-    <span class='kw'>arcSharpness</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+    <pre class="examples"><div class='input'><span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"London"</span>, <span class='st'>"New York"</span>, <span class='st'>"Beijing"</span>, <span class='st'>"Sydney"</span>),
+  <span class='kw'>lon</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>0.1167218</span>, -<span class='fl'>73.98002</span>, <span class='fl'>116.3883</span>, <span class='fl'>151.18518</span>),
+  <span class='kw'>lat</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>51.49999</span>, <span class='fl'>40.74998</span>, <span class='fl'>39.92889</span>, -<span class='fl'>33.92001</span>),
+  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='fu'>runif</span>(<span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>17</span>)
+)
 
-<span class='no'>data</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='datamaps.html'>datamaps</a></span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_arcs_name</span>(<span class='no'>origin</span>, <span class='no'>target</span>, <span class='no'>greatArc</span>, <span class='no'>arcSharpness</span>)
+<span class='no'>icon_url</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(
+  <span class='st'>"https://pbs.twimg.com/profile_images/"</span>,
+  <span class='st'>"927645314630193158/ufoYTbbi_400x400.jpg"</span>
+)
 
-<span class='co'># US states</span>
-<span class='no'>states</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>origin</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"AR"</span>, <span class='st'>"NY"</span>, <span class='st'>"CA"</span>, <span class='st'>"IL"</span>, <span class='st'>"CO"</span>, <span class='st'>"MT"</span>,
-                                <span class='st'>"TX"</span>, <span class='st'>"WA"</span>, <span class='st'>"TN"</span>, <span class='st'>"MT"</span>),
-    <span class='kw'>target</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"OR"</span>, <span class='st'>"SD"</span>, <span class='st'>"WI"</span>, <span class='st'>"TX"</span>, <span class='st'>"LA"</span>, <span class='st'>"AZ"</span>, <span class='st'>"FL"</span>, <span class='st'>"MI"</span>, <span class='st'>"HI"</span>,
-               <span class='st'>"OK"</span>),
-    <span class='kw'>strokeWidth</span> <span class='kw'>=</span> <span class='fu'>runif</span>(<span class='fl'>10</span>, <span class='fl'>1</span>, <span class='fl'>9</span>),
-    <span class='kw'>strokeColor</span> <span class='kw'>=</span> <span class='fu'>colorRampPalette</span>(<span class='fu'>c</span>(<span class='st'>"red"</span>, <span class='st'>"blue"</span>))(<span class='fl'>10</span>))
-
-<span class='no'>states</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='datamaps.html'>datamaps</a></span>(<span class='kw'>scope</span> <span class='kw'>=</span> <span class='st'>"USA"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>add_arcs_name</span>(<span class='no'>origin</span>, <span class='no'>target</span>, <span class='no'>strokeWidth</span>, <span class='no'>strokeColor</span>)</div></pre>
+<span class='no'>coords</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='datamaps.html'>datamaps</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>markers_options</span>(
+    <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'>list</span>(
+      <span class='kw'>url</span> <span class='kw'>=</span> <span class='no'>icon_url</span>,
+      <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>20</span>
+     ),
+     <span class='kw'>fillOpacity</span> <span class='kw'>=</span> <span class='fl'>1</span>
+  ) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_markers</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
