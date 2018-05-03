@@ -3,7 +3,7 @@
 #' Dynamically add bubble using Shiny.
 #'
 #' @param proxy a proxy as returned by \code{\link{datamapsProxy}}.
-#' @param longitude,latitude coordinates of bubbles.
+#' @param lon,lat coordinates of bubbles.
 #' @param radius radius of bubbles.
 #' @param color color of bubbles.
 #' @param name name of bubbles.
@@ -74,15 +74,15 @@
 #' }
 #'
 #' @export
-update_bubbles <- function(proxy, longitude, latitude, radius, color, name, ...){
+update_bubbles <- function(proxy, lon, lat, radius, color, name, ...){
 
   if(!inherits(proxy, "datamapsProxy"))
     stop("must pass proxy, see datamapsProxy.")
 
   data <- get("data", envir = data_env)
   col <- eval(substitute(color), data)
-  lon <- eval(substitute(longitude), data)
-  lat <- eval(substitute(latitude), data)
+  lon <- eval(substitute(lon), data)
+  lat <- eval(substitute(lat), data)
   rad <- eval(substitute(radius), data)
   nam <- eval(substitute(name), data)
 
