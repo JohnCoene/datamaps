@@ -1,3 +1,8 @@
+# datamaps 0.0.3.9000
+
+* Support for [icons](https://github.com/jdlubrano/datamaps-icons-plugin) and [marker](https://github.com/arshad/datamaps-custom-marker) plugins added.
+* `longitude` and `latitude` arguments renamed to `lon` and `lat` respectively.
+
 # datamaps 0.0.2
 
 * Better shiny reactivity
