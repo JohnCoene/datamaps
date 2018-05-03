@@ -50,7 +50,7 @@ Combine types.
 library(datamaps)
 library(dplyr)
 
-sesh <- read.csv("https://raw.githubusercontent.com/JohnCoene/projects/gh-pages/htmlwidgets/echarts/data/sessions.csv")
+sesh <- read.csv("https://raw.githubusercontent.com/JohnCoene/projects/master/htmlwidgets/echarts/data/sessions.csv")
 
 # datamaps uses iso3c format
 sesh$iso3c <- countrycode::countrycode(sesh$Country, "country.name", "iso3c")
@@ -134,4 +134,40 @@ data %>%
   }
   ')
   )
+```
+
+### Plugins
+
+SVG icons
+
+```{r}
+coords <- data.frame(
+  city = c("London", "New York", "Beijing", "Sydney"),
+  lon = c(-0.1167218, -73.98002, 116.3883, 151.18518),
+  lat = c(51.49999, 40.74998, 39.92889, -33.92001)
+)
+
+coords %>% 
+  datamaps() %>% 
+  add_icons(lon, lat)
+```
+
+Custom markers
+
+```{r}
+icon_url <- paste0(
+  "https://pbs.twimg.com/profile_images/",
+  "927645314630193158/ufoYTbbi_400x400.jpg"
+)
+
+coords %>% 
+  datamaps() %>% 
+  markers_options(
+    icon = list(
+      url = icon_url,
+      width = 20, height = 20
+     ),
+     fillOpacity = 1
+  ) %>% 
+  add_markers(lon, lat)
 ```
