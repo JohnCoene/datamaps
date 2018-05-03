@@ -12,3 +12,5 @@ dependencies:
    src: htmlwidgets/lib/datamaps
    script:
      - datamaps.all.hires.min.js
+     - datamaps-icons.js
+     - datamaps.markers.js

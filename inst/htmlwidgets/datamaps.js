@@ -63,6 +63,15 @@ HTMLWidgets.widget({
           if(x.hasOwnProperty('graticule')){
             chart.graticule();
           }
+          
+          if(x.hasOwnProperty('iconsData')){
+            chart.icons(x.iconsData, x.iconsOpts);
+          }
+          
+          if(x.hasOwnProperty('customMarkersData')){
+            chart.addPlugin('markers', Datamap.customMarkers);
+            chart.markers(x.customMarkersData, x.customMarkersOptions);
+          }
 
       },
 
