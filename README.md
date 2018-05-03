@@ -26,6 +26,8 @@ install.packages("datamaps")
 devtools::install_github("JohnCoene/datamaps")
 ```
 
+Development version includes 2 plugins, `add_icons` and `add_markers`.
+
 ## Info
 
 * See [website](http://datamaps.john-coene.com/) for demos. 

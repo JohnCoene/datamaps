@@ -112,3 +112,39 @@ arc_data__ <- function(ori.lon, ori.lat, des.lon, des.lat, ...){
   return(edges)
 
 }
+
+icons_data_ <- function(lon, lat, ...){
+  
+  data <- get("data", envir = data_env) # get data for eval
+  dots <- eval(substitute(alist(...))) # capture dots
+  base <- lapply(dots, eval, data) # eval
+  names(base) <- sapply(dots, deparse) # deparse for name
+  base <- as.data.frame(base) # to data.frame
+  
+  if(nrow(base) > 1){
+    base$lat <- data[[lat]]
+    base$lng <- data[[lon]]
+  } else {
+    base <- data.frame(lat = data[[lat]], lng = data[[lon]])
+  }
+  
+  apply(base, 1, as.list)
+}
+
+markers_data_ <- function(lon, lat, ...){
+  
+  data <- get("data", envir = data_env) # get data for eval
+  dots <- eval(substitute(alist(...))) # capture dots
+  base <- lapply(dots, eval, data) # eval
+  names(base) <- sapply(dots, deparse) # deparse for name
+  base <- as.data.frame(base) # to data.frame
+
+  if(nrow(base) > 1){
+    base$latitude <- data[[lat]]
+    base$longitude <- data[[lon]]
+  } else {
+    base <- data.frame(latitude = data[[lat]], longitude = data[[lon]])
+  }
+  
+  apply(base, 1, as.list)
+}
