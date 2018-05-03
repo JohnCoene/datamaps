@@ -4,12 +4,12 @@
 \alias{update_bubbles}
 \title{Dynamically add bubbles}
 \usage{
-update_bubbles(proxy, longitude, latitude, radius, color, name, ...)
+update_bubbles(proxy, lon, lat, radius, color, name, ...)
 }
 \arguments{
 \item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
 
-\item{longitude, latitude}{coordinates of bubbles.}
+\item{lon, lat}{coordinates of bubbles.}
 
 \item{radius}{radius of bubbles.}
 

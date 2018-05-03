@@ -53,7 +53,7 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 #' Add bubbles to the map.
 #'
 #' @param p a datamaps object.
-#' @param longitude,latitude coordinates of bubbles.
+#' @param lon,lat coordinates of bubbles.
 #' @param radius radius of bubbles.
 #' @param color color of bubbles.
 #' @param colors color palette.
@@ -80,12 +80,12 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 #'     add_bubbles(lon, lat, values * 2, values, city, colors = c("red", "blue"))
 #'
 #' @export
-add_bubbles <- function(p, longitude, latitude, radius, color, name, ..., colors = c("#FFEDA0", "#FEB24C", "#F03B20")){
+add_bubbles <- function(p, lon, lat, radius, color, name, ..., colors = c("#FFEDA0", "#FEB24C", "#F03B20")){
 
   data <- get("data", envir = data_env)
   col <- eval(substitute(color), data)
-  lon <- eval(substitute(longitude), data)
-  lat <- eval(substitute(latitude), data)
+  lon <- eval(substitute(lon), data)
+  lat <- eval(substitute(lat), data)
   rad <- eval(substitute(radius), data)
   nam <- eval(substitute(name), data)
 

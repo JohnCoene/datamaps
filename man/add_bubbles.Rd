@@ -4,13 +4,13 @@
 \alias{add_bubbles}
 \title{Add bubbles}
 \usage{
-add_bubbles(p, longitude, latitude, radius, color, name, ...,
-  colors = c("#FFEDA0", "#FEB24C", "#F03B20"))
+add_bubbles(p, lon, lat, radius, color, name, ..., colors = c("#FFEDA0",
+  "#FEB24C", "#F03B20"))
 }
 \arguments{
 \item{p}{a datamaps object.}
 
-\item{longitude, latitude}{coordinates of bubbles.}
+\item{lon, lat}{coordinates of bubbles.}
 
 \item{radius}{radius of bubbles.}
 
