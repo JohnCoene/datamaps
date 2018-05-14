@@ -7,4 +7,11 @@
 
 0 errors | 0 warnings | 0 note
 
-* Some bug fixes + improvements
+In response to email below from Kurt:
+
+> Please see the problems shown on
+> https://cran.r-project.org/web/checks/check_results_datamaps.html.
+>
+> Please correct before 2018-05-27 to safely retain your package on CRAN.
+
+Also some bug fixes + improvements
