@@ -4,8 +4,13 @@
 \alias{add_choropleth}
 \title{Add choropleth}
 \usage{
-add_choropleth(p, locations, color, ..., colors = c("#FFEDA0", "#FEB24C",
-  "#F03B20"))
+add_choropleth(
+  p,
+  locations,
+  color,
+  ...,
+  colors = c("#FFEDA0", "#FEB24C", "#F03B20")
+)
 }
 \arguments{
 \item{p}{a datamaps object.}

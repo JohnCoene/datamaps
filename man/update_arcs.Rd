@@ -5,8 +5,14 @@
 \alias{update_arcs_name}
 \title{Dynamically update arcs}
 \usage{
-update_arcs(proxy, origin.lon, origin.lat, destination.lon, destination.lat,
-  ...)
+update_arcs(
+  proxy,
+  origin.lon,
+  origin.lat,
+  destination.lon,
+  destination.lat,
+  ...
+)
 
 update_arcs_name(proxy, origin, destination, ...)
 }

@@ -4,13 +4,23 @@
 \alias{config_geo}
 \title{Configure map}
 \usage{
-config_geo(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
-  hide.antarctica = TRUE, hide.hawaii.and.alaska = FALSE,
-  border.width = 1, border.opacity = 1, border.color = "#FDFDFD",
-  highlight.fill.color = "#FC8D59", highlight.border.opacity = 1,
+config_geo(
+  p,
+  popup.on.hover = TRUE,
+  highlight.on.hover = TRUE,
+  hide.antarctica = TRUE,
+  hide.hawaii.and.alaska = FALSE,
+  border.width = 1,
+  border.opacity = 1,
+  border.color = "#FDFDFD",
+  highlight.fill.color = "#FC8D59",
+  highlight.border.opacity = 1,
   highlight.border.color = "rgba(250, 15, 160, 0.2)",
-  highlight.fill.opacity = 0.85, highlight.border.width = 2,
-  data.url = NULL, ...)
+  highlight.fill.opacity = 0.85,
+  highlight.border.width = 2,
+  data.url = NULL,
+  ...
+)
 }
 \arguments{
 \item{p}{a datamaps object.}

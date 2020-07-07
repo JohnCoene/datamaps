@@ -4,8 +4,15 @@
 \alias{config_arcs}
 \title{Configure arcs}
 \usage{
-config_arcs(p, stroke.color = "#DD1C77", stroke.width = 1,
-  arc.sharpness = 1, animation.speed = 600, popup.on.hover = FALSE, ...)
+config_arcs(
+  p,
+  stroke.color = "#DD1C77",
+  stroke.width = 1,
+  arc.sharpness = 1,
+  animation.speed = 600,
+  popup.on.hover = FALSE,
+  ...
+)
 }
 \arguments{
 \item{p}{a datamaps object.}

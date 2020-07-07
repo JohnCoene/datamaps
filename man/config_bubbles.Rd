@@ -4,13 +4,23 @@
 \alias{config_bubbles}
 \title{Configure bubbles}
 \usage{
-config_bubbles(p, popup.on.hover = TRUE, highlight.on.hover = TRUE,
-  fill.opacity = 0.75, animate = TRUE, border.width = 1,
-  border.opacity = 1, border.color = "#FDFDFD",
-  highlight.fill.color = "#FC8D59", highlight.border.opacity = 1,
+config_bubbles(
+  p,
+  popup.on.hover = TRUE,
+  highlight.on.hover = TRUE,
+  fill.opacity = 0.75,
+  animate = TRUE,
+  border.width = 1,
+  border.opacity = 1,
+  border.color = "#FDFDFD",
+  highlight.fill.color = "#FC8D59",
+  highlight.border.opacity = 1,
   highlight.border.color = "rgba(250, 15, 160, 0.2)",
-  highlight.fill.opacity = 0.85, highlight.border.width = 2,
-  exit.delay = 100, ...)
+  highlight.fill.opacity = 0.85,
+  highlight.border.width = 2,
+  exit.delay = 100,
+  ...
+)
 }
 \arguments{
 \item{p}{a datamaps object.}

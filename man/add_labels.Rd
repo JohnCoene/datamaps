@@ -4,8 +4,14 @@
 \alias{add_labels}
 \title{Add labels}
 \usage{
-add_labels(p, label.color = "#000", line.width = 1, font.size = 10,
-  font.family = "Verdana", ...)
+add_labels(
+  p,
+  label.color = "#000",
+  line.width = 1,
+  font.size = 10,
+  font.family = "Verdana",
+  ...
+)
 }
 \arguments{
 \item{p}{a datamaps object.}

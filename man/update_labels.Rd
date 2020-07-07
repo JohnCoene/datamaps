@@ -4,8 +4,14 @@
 \alias{update_labels}
 \title{Dynamically update labels}
 \usage{
-update_labels(proxy, label.color = "#000", line.width = 1, font.size = 10,
-  font.family = "Verdana", ...)
+update_labels(
+  proxy,
+  label.color = "#000",
+  line.width = 1,
+  font.size = 10,
+  font.family = "Verdana",
+  ...
+)
 }
 \arguments{
 \item{proxy}{a proxy as returned by \code{\link{datamapsProxy}}.}
