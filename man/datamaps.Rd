@@ -10,7 +10,7 @@ datamaps(
   default = "#ABDDA4",
   projection = "equirectangular",
   responsive = TRUE,
-  width = "100\%",
+  width = NULL,
   height = NULL,
   elementId = NULL
 )

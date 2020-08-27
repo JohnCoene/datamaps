@@ -15,6 +15,7 @@
 #'
 #' @export
 add_legend <- function(p){
+  force(p)
   p$x$legend <- TRUE
   p
 }
@@ -42,6 +43,7 @@ add_legend <- function(p){
 #' @export
 add_labels <- function(p, label.color = "#000", line.width = 1, font.size = 10, font.family = "Verdana", ...){
 
+  force(p)
   opts <- list(...)
   opts$labelColor <- label.color
   opts$lineWidth <- line.width

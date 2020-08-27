@@ -36,6 +36,7 @@
 #' @export
 add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB24C", "#F03B20")){
 
+  force(p)
   data <- get("data", envir = data_env)
   loc <- eval(substitute(locations), data)
   col <- eval(substitute(color), data)
@@ -82,6 +83,7 @@ add_choropleth <- function(p, locations, color, ..., colors = c("#FFEDA0", "#FEB
 #' @export
 add_bubbles <- function(p, lon, lat, radius, color, name, ..., colors = c("#FFEDA0", "#FEB24C", "#F03B20")){
 
+  force(p)
   data <- get("data", envir = data_env)
   col <- eval(substitute(color), data)
   lon <- eval(substitute(lon), data)
@@ -131,6 +133,7 @@ add_bubbles <- function(p, lon, lat, radius, color, name, ..., colors = c("#FFED
 #' @export
 add_data <- function(p, data) {
 
+  force(p)
   if(!missing(data))
     assign("data", data, envir = data_env)
   else
@@ -173,6 +176,7 @@ add_data <- function(p, data) {
 #' @export
 add_arcs_name <- function(p, origin, destination, ...){
 
+  force(p)
   data <- get("data", envir = data_env)
   ori <- eval(substitute(origin), data)
   des <- eval(substitute(destination), data)
@@ -206,6 +210,7 @@ add_arcs_name <- function(p, origin, destination, ...){
 #' @export
 add_arcs <- function(p, origin.lon, origin.lat, destination.lon, destination.lat, ...){
 
+  force(p)
   data <- get("data", envir = data_env)
   ori.lon <- eval(substitute(origin.lon), data)
   ori.lat <- eval(substitute(origin.lat), data)

@@ -18,7 +18,7 @@ Suggests:
     RColorBrewer,
     countrycode,
     dplyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000
 URL: http://datamaps.john-coene.com
 BugReports: https://github.com/JohnCoene/datamaps/issues
 VignetteBuilder: knitr

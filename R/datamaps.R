@@ -21,7 +21,7 @@
 #'
 #' @rdname datamaps
 #' @export
-datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = TRUE, width = "100%",
+datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "equirectangular", responsive = TRUE, width = NULL,
                      height = NULL, elementId = NULL) {
 
   if(!missing(data))
@@ -48,7 +48,7 @@ datamaps <- function(data, scope = "world", default = "#ABDDA4", projection = "e
     package = 'datamaps',
     elementId = elementId,
     sizingPolicy = htmlwidgets::sizingPolicy(
-      viewer.padding = 0,
+      padding = 0,
       defaultWidth = "100%",
       browser.fill = TRUE
     )
